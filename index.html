@@ -1,18 +1,223 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Class</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Class Notes</title>
     <script src="intro.js"></script>
-</head>
-<body>
-    <div>
-        <h1>Java Script Classes</h1>
-        <h4>JS -- JavaScript is a High-level, Dynamically-typed, and Interpreted programming language.</h4>
-        <p>High Level -  Easy to understand (eg. if,else)</p>
-        <p>Dynamically-typed - enough smart to understand variables without giving type (eg. num=5,name="noor")</p>
-        <p>Interpreted -  Execute one by one (eg. synchronous)</p>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f7f6;
+        color: #333;
+        line-height: 1.6;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      h1 {
+        color: #f7df1e; /* JS Yellow */
+        background-color: #323330; /* Dark contrast */
+        padding: 15px;
+        text-align: center;
+        border-radius: 6px;
+        margin-top: 0;
+      }
+
+      h2 {
+        color: #2c3e50;
+        border-bottom: 2px solid #f7df1e;
+        padding-bottom: 5px;
+        margin-top: 30px;
+      }
+
+      h3 {
+        color: #16a085;
+        margin-bottom: 5px;
+      }
+
+      p {
+        margin: 5px 0 15px 0;
+      }
+
+      code {
+        background-color: #f8f9fa;
+        border-left: 3px solid #f7df1e;
+        display: block;
+        padding: 10px;
+        font-family: "Courier New", Courier, monospace;
+        white-space: pre-wrap;
+        border-radius: 4px;
+        margin-top: 5px;
+      }
+
+      .highlight {
+        font-weight: bold;
+        color: #e74c3c;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>JavaScript Reference Guide</h1>
+
+      <h2>Introduction to JS</h2>
+      <p>
+        <strong>JavaScript</strong> is a High-level, Dynamically-typed, and
+        Interpreted programming language.
+      </p>
+
+      <h3>High Level</h3>
+      <p>
+        Easy for humans to understand and write. Memory management is handled
+        automatically. <span class="highlight">Example:</span> Using simple
+        keywords like <code>if (x > 10) { ... } else { ... }</code>.
+      </p>
+
+      <h3>Dynamically-typed</h3>
+      <p>
+        Smart enough to understand data types automatically without explicitly
+        declaring them. Types can change at runtime.
+        <span class="highlight">Example:</span>
+      </p>
+      <code
+        >let num = 5;
+        Automatically treated as a String</code
+      >
+
+      <h3>Interpreted</h3>
+      <p>
+        The code is executed line-by-line (synchronously) by the browser's JS
+        engine, rather than requiring a separate compilation step beforehand.
+      </p>
+
+      <h2>Data Types</h2>
+      <p>
+        Data types specify the classification of data that a variable can hold
+        in JavaScript. They are broadly divided into
+        <strong>Primitive</strong> and <strong>Non-Primitive</strong> types.
+      </p>
+
+      <h3>1. String</h3>
+      <p>
+        Represents textual data. Must be wrapped in single or double quotes.
+      </p>
+      <code>let name = "Noor"; let city = 'Delhi';</code>
+
+      <h3>2. Number</h3>
+      <p>Represents both integer and floating-point (decimal) numbers.</p>
+      <code>let age = 25; let price = 99.99;</code>
+
+      <h3>3. Boolean</h3>
+      <p>
+        Represents a logical entity and can have only two values:
+        <code>true</code> or <code>false</code>.
+      </p>
+      <code>let isJsFun = true; let isGraduated = false;</code>
+
+      <h3>4. Undefined</h3>
+      <p>
+        A variable that has been declared but has not yet been assigned a value.
+      </p>
+      <code>let userData; console.log(userData); // Outputs: undefined</code>
+
+      <h3>5. Null</h3>
+      <p>Represents the intentional absence of any object value.</p>
+      <code>let emptyValue = null;</code>
+
+      <h3>6. Object (Non-Primitive)</h3>
+      <p>
+        Used to store collections of data and more complex entities as key-value
+        pairs.
+      </p>
+      <code>let student = { firstName: "Noor", age: 22, isPassed: true };</code>
+
+      <h2>Variables</h2>
+      <p>
+        Variables are containers for storing data values. JS uses three main
+        keywords to declare them:
+      </p>
+
+      <h3>1. var</h3>
+      <p>
+        The older way to declare variables. It is function-scoped and can be
+        re-declared and updated.
+      </p>
+      <code
+        >var x = 10; var x = 20; // Allowed: Re-declared without errors</code
+      >
+
+      <h3>2. let</h3>
+      <p>
+        The modern way to declare variables. It is block-scoped (lives only
+        inside <code>{}</code>) and can be updated, but <em>cannot</em> be
+        re-declared in the same scope.
+      </p>
+      <code
+        >let score = 90; score = 95; // Allowed: Updated value // let score =
+        100; // Error: Cannot re-declare</code
+      >
+
+      <h3>3. const</h3>
+      <p>
+        Short for constant. It is block-scoped and cannot be updated or
+        re-declared. It must be initialized when declared.
+      </p>
+      <code
+        >const PI = 3.14159; // PI = 3; // Error: Assignment to constant
+        variable</code
+      >
+
+      <h2>Operators</h2>
+
+      <h3>1. Arithmetic Operators</h3>
+      <p>Used to perform mathematical calculations.</p>
+      <code
+        >let sum = 10 + 5; // Addition (+) -> 15 let diff = 10 - 5; //
+        Subtraction (-) -> 5 let product = 10 * 5; // Multiplication (*) -> 50
+        let quotient = 10 / 5; // Division (/) -> 2 let remainder = 10 % 3; //
+        Modulus (%) -> 1</code
+      >
+
+      <h3>2. Assignment Operators</h3>
+      <p>Used to assign values to variables.</p>
+      <code
+        >let x = 10; // Simple assignment (=) x += 5; // Equivalent to: x = x +
+        5 (Result: 15) x -= 3; // Equivalent to: x = x - 3 (Result: 12)</code
+      >
+
+      <h3>3. Comparison Operators</h3>
+      <p>Used to compare two values and return a boolean (true/false).</p>
+      <code
+        >5 == "5"; // True (Compares values only) 5 === "5"; // False (Strict:
+        Compares both value and data type) 10 > 5; // True (Greater than) 10 !=
+        5; // True (Not equal to)</code
+      >
+
+      <h3>4. Logical Operators</h3>
+      <p>Used to determine the logic between variables or values.</p>
+      <code
+        >// Logical AND (&&): Both conditions must be true (5 > 3 && 10 > 20) ->
+        returns false // Logical OR (||): At least one condition must be true (5
+        > 3 || 10 > 20) -> returns true // Logical NOT (!): Reverses the boolean
+        result !(5 > 3) -> returns false</code
+      >
+
+      <h3>5. Ternary (Conditional) Operator</h3>
+      <p>Acts as a shortcut for an <code>if...else</code> statement.</p>
+      <p><em>Syntax: condition ? value_if_true : value_if_false;</em></p>
+      <code
+        >let userAge = 18; let status = (userAge >= 18) ? "Adult" : "Minor";
+        console.log(status); // Outputs: "Adult"</code
+      >
     </div>
-</body>
+  </body>
 </html>
