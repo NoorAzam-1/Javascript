@@ -24,8 +24,8 @@
       }
 
       h1 {
-        color: #f7df1e; /* JS Yellow */
-        background-color: #323330; /* Dark contrast */
+        color: #f7df1e;
+        background-color: #323330;
         padding: 15px;
         text-align: center;
         border-radius: 6px;
@@ -87,7 +87,7 @@
       <p>
         Smart enough to understand data types automatically without explicitly
         declaring them. Types can change at runtime.
-        <span class="highlight">Example (Correction):</span>
+        <span class="highlight">Example:</span>
       </p>
       <code>let num = 5; // Automatically treated as a Number (Not a String)</code>
 
@@ -240,6 +240,344 @@
       <h3>5. for...in Loop</h3>
       <p>Loops through the properties (Keys) of an Object.</p>
       <code>let car = { brand: "Tata", model: "Nexon", year: 2024 };&#10;for (let key in car) {&#10;  console.log(key + ": " + car[key]);&#10;}</code>
+
+      <!-- SECTION 7: FUNCTIONS -->
+      <h2>7. Functions</h2>
+      <p>
+        A function is a reusable block of code designed to perform a specific task. You define it once and can call (invoke) it multiple times. Functions help avoid code repetition.
+      </p>
+
+      <h3>1. Function Declaration</h3>
+      <p>
+        The traditional way to define a function using the <code>function</code> keyword. It gets <strong>hoisted</strong> (can be called before it is defined in the code).
+      </p>
+      <code>function sayHello() {&#10;  console.log("Hello, Welcome to JavaScript!");&#10;}&#10;sayHello(); // Calling the function</code>
+
+      <h3>2. Function with Parameters</h3>
+      <p>
+        Parameters act as placeholders for values that you pass into the function when calling it.
+      </p>
+      <code>function greetUser(name) {&#10;  console.log("Hello, " + name + "! How are you?");&#10;}&#10;greetUser("Noor"); // Outputs: Hello, Noor! How are you?</code>
+
+      <h3>3. Function with Multiple Parameters</h3>
+      <p>You can pass multiple values separated by commas.</p>
+      <code>function addNumbers(num1, num2) {&#10;  console.log("Sum is: " + (num1 + num2));&#10;}&#10;addNumbers(10, 20); // Outputs: Sum is: 30</code>
+
+      <h3>4. Function with Return Value</h3>
+      <p>
+        The <code>return</code> statement sends a value back to where the function was called. The function stops executing when it hits <code>return</code>.
+      </p>
+      <code>function multiply(a, b) {&#10;  return a * b; // Returns the result&#10;}&#10;let result = multiply(5, 4);&#10;console.log("Multiplication Result: " + result); // Outputs: 20</code>
+
+      <h3>5. Function Expression</h3>
+      <p>
+        Storing an anonymous function inside a variable. It is <strong>NOT hoisted</strong> — you must define it before calling.
+      </p>
+      <code>const sayBye = function() {&#10;  console.log("Goodbye! See you later.");&#10;}&#10;sayBye(); // Calling via variable name</code>
+
+      <h3>6. Arrow Function (ES6)</h3>
+      <p>
+        A shorter, modern syntax for writing functions. It does not have its own <code>this</code> context. <span class="highlight">Note:</span> If there is only one parameter, parentheses are optional. If there is only one return statement, curly braces and <code>return</code> keyword are optional.
+      </p>
+      <code>// Full syntax&#10;const square = (num) => {&#10;  return num * num;&#10;};&#10;console.log(square(6)); // Outputs: 36&#10;&#10;// Short syntax (implicit return)&#10;const doubleIt = (n) => n * 2;&#10;console.log(doubleIt(7)); // Outputs: 14</code>
+
+      <!-- SECTION 8: ARRAYS -->
+      <h2>8. Arrays</h2>
+      <p>
+        An array is a single variable used to store <strong>multiple values</strong> in an ordered list. Arrays are zero-indexed, meaning the first element is at position <code>0</code>. Arrays can hold mixed data types.
+      </p>
+
+      <h3>1. Creating an Array</h3>
+      <p>Using square brackets <code>[]</code> is the most common way (Array Literal).</p>
+      <code>let colors = ["Red", "Green", "Blue"];&#10;let mixed = ["Apple", 25, true, null]; // Mixed data types allowed</code>
+
+      <h3>2. Accessing Elements by Index</h3>
+      <p>Access elements using their index number inside square brackets.</p>
+      <code>let fruits = ["Mango", "Banana", "Grapes"];&#10;console.log(fruits[0]); // Outputs: "Mango" (First element)&#10;console.log(fruits[2]); // Outputs: "Grapes" (Third element)</code>
+
+      <h3>3. Modifying Elements</h3>
+      <p>You can change an element's value by assigning a new value to a specific index.</p>
+      <code>let cars = ["Honda", "Toyota", "Ford"];&#10;cars[1] = "BMW"; // Changing "Toyota" to "BMW"&#10;console.log(cars); // Outputs: ["Honda", "BMW", "Ford"]</code>
+
+      <h3>4. Array Length Property</h3>
+      <p>The <code>.length</code> property returns the total number of elements in the array.</p>
+      <code>let numbers = [10, 20, 30, 40, 50];&#10;console.log(numbers.length); // Outputs: 5</code>
+
+      <h3>5. Adding Elements</h3>
+      <p>
+        <code>push()</code> adds to the <strong>end</strong>.
+        <code>unshift()</code> adds to the <strong>beginning</strong>.
+      </p>
+      <code>let animals = ["Dog", "Cat"];&#10;animals.push("Lion"); // Adds to end -> ["Dog", "Cat", "Lion"]&#10;animals.unshift("Bird"); // Adds to start -> ["Bird", "Dog", "Cat", "Lion"]&#10;console.log(animals);</code>
+
+      <h3>6. Removing Elements</h3>
+      <p>
+        <code>pop()</code> removes from the <strong>end</strong>.
+        <code>shift()</code> removes from the <strong>beginning</strong>.
+      </p>
+      <code>let items = ["Pen", "Book", "Eraser", "Scale"];&#10;items.pop(); // Removes "Scale" from end&#10;items.shift(); // Removes "Pen" from start&#10;console.log(items); // Outputs: ["Book", "Eraser"]</code>
+
+      <!-- SECTION 9: OBJECTS -->
+      <h2>9. Objects</h2>
+      <p>
+        An object is a collection of related data stored as <strong>key-value pairs</strong>. The key (also called property name) is always a string, and the value can be any data type (string, number, array, function, or even another object). Objects are used to represent real-world entities.
+      </p>
+
+      <h3>1. Creating an Object (Object Literal)</h3>
+      <p>The most common way — using curly braces <code>{}</code>.</p>
+      <code>let student = {&#10;  name: "Noor",&#10;  age: 22,&#10;  course: "Web Development",&#10;  isGraduated: false&#10;};</code>
+
+      <h3>2. Accessing Properties (Dot Notation)</h3>
+      <p>Use a dot <code>.</code> followed by the property name. Most common and easiest way.</p>
+      <code>let car = { brand: "Tata", model: "Nexon" };&#10;console.log(car.brand); // Outputs: "Tata"&#10;console.log(car.model); // Outputs: "Nexon"</code>
+
+      <h3>3. Accessing Properties (Bracket Notation)</h3>
+      <p>Use square brackets with the property name as a <strong>string</strong>. Useful when property names have spaces or are stored in a variable.</p>
+      <code>let user = { firstName: "Rahul", "last name": "Sharma" };&#10;console.log(user["firstName"]); // Outputs: "Rahul"&#10;console.log(user["last name"]); // Outputs: "Sharma" (Cannot use dot notation here)</code>
+
+      <h3>4. Modifying Properties</h3>
+      <p>Assign a new value to an existing key using dot or bracket notation.</p>
+      <code>let phone = { brand: "Samsung", price: 25000 };&#10;phone.price = 22000; // Updated price&#10;console.log(phone.price); // Outputs: 22000</code>
+
+      <h3>5. Adding New Properties</h3>
+      <p>Simply assign a value to a new key that doesn't exist yet.</p>
+      <code>let laptop = { brand: "Dell", ram: "8GB" };&#10;laptop.storage = "512GB"; // Adding new property&#10;laptop.color = "Black"; // Adding another new property&#10;console.log(laptop);&#10;// Outputs: { brand: "Dell", ram: "8GB", storage: "512GB", color: "Black" }</code>
+
+      <h3>6. Deleting Properties</h3>
+      <p>Use the <code>delete</code> keyword to remove a property entirely from the object.</p>
+      <code>let employee = { name: "Priya", dept: "HR", salary: 40000 };&#10;delete employee.salary; // Removes the salary property&#10;console.log(employee); // Outputs: { name: "Priya", dept: "HR" }</code>
+
+      <h3>7. Object with Method (Function inside Object)</h3>
+      <p>
+        A method is a function stored as a property inside an object. It allows the object to perform actions using its own data. Use <code>this</code> keyword to refer to the current object's properties inside the method.
+      </p>
+      <code>let person = {&#10;  name: "Amit",&#10;  age: 30,&#10;  introduce: function() {&#10;    console.log("Hi, I am " + this.name + " and I am " + this.age + " years old.");&#10;  }&#10;};&#10;person.introduce(); // Outputs: Hi, I am Amit and I am 30 years old.</code>
+
+      <!-- SECTION 10: ARRAY METHODS -->
+      <h2>10. Array Methods</h2>
+      <p>
+        Array methods are built-in functions that you can call on arrays to perform common operations like searching, transforming, filtering, and sorting — without writing manual loops.
+      </p>
+
+      <h3>1. indexOf()</h3>
+      <p>Returns the <strong>first index</strong> at which a given element is found. Returns <code>-1</code> if the element is not present.</p>
+      <code>let fruits = ["Apple", "Mango", "Banana", "Mango"];&#10;console.log(fruits.indexOf("Mango")); // Outputs: 1 (first occurrence)&#10;console.log(fruits.indexOf("Grapes")); // Outputs: -1 (not found)</code>
+
+      <h3>2. includes()</h3>
+      <p>Returns <code>true</code> if the array contains the specified element, otherwise <code>false</code>.</p>
+      <code>let colors = ["Red", "Green", "Blue"];&#10;console.log(colors.includes("Green")); // Outputs: true&#10;console.log(colors.includes("Yellow")); // Outputs: false</code>
+
+      <h3>3. join()</h3>
+      <p>Joins all elements of an array into a <strong>single string</strong>, separated by a specified separator (default is comma).</p>
+      <code>let words = ["Hello", "World", "JavaScript"];&#10;console.log(words.join()); // Outputs: "Hello,World,JavaScript"&#10;console.log(words.join(" - ")); // Outputs: "Hello - World - JavaScript"&#10;console.log(words.join(" ")); // Outputs: "Hello World JavaScript"</code>
+
+      <h3>4. slice()</h3>
+      <p>Returns a <strong>shallow copy</strong> of a portion of the array into a new array. <span class="highlight">Note:</span> It does NOT modify the original array. Parameters are <code>(start, end)</code> — end index is excluded.</p>
+      <code>let nums = [10, 20, 30, 40, 50];&#10;let sliced = nums.slice(1, 4); // Index 1 to 3 (4 is excluded)&#10;console.log(sliced); // Outputs: [20, 30, 40]&#10;console.log(nums); // Original unchanged: [10, 20, 30, 40, 50]</code>
+
+      <h3>5. splice()</h3>
+      <p>Used to <strong>add, remove, or replace</strong> elements in an array. <span class="highlight">Note:</span> It <strong>MODIFIES</strong> the original array. Parameters: <code>splice(startIndex, deleteCount, item1ToAdd, item2ToAdd, ...)</code>.</p>
+      <code>let arr = ["A", "B", "C", "D", "E"];&#10;// Remove 2 elements starting from index 1&#10;let removed = arr.splice(1, 2);&#10;console.log(removed); // Outputs: ["B", "C"] (removed items)&#10;console.log(arr); // Outputs: ["A", "D", "E"] (original modified)</code>
+
+      <h3>6. concat()</h3>
+      <p>Merges two or more arrays and returns a <strong>new array</strong>. Does NOT change the original arrays.</p>
+      <code>let arr1 = [1, 2, 3];&#10;let arr2 = [4, 5, 6];&#10;let merged = arr1.concat(arr2);&#10;console.log(merged); // Outputs: [1, 2, 3, 4, 5, 6]&#10;console.log(arr1); // Outputs: [1, 2, 3] (unchanged)</code>
+
+      <h3>7. reverse()</h3>
+      <p>Reverses the order of elements in the array. <span class="highlight">Warning:</span> It <strong>MODIFIES</strong> the original array.</p>
+      <code>let letters = ["A", "B", "C", "D"];&#10;letters.reverse();&#10;console.log(letters); // Outputs: ["D", "C", "B", "A"]</code>
+
+      <h3>8. sort()</h3>
+      <p>Sorts the elements of an array <strong>in-place</strong> (modifies original). By default, it sorts elements as <strong>strings</strong> alphabetically, which can cause issues with numbers.</p>
+      <code>// String sorting (default)&#10;let names = ["Zara", "Noor", "Amit"];&#10;names.sort();&#10;console.log(names); // Outputs: ["Amit", "Noor", "Zara"]&#10;&#10;// Number sorting (needs compare function)&#10;let numArr = [40, 100, 1, 5, 25];&#10;numArr.sort(function(a, b) { return a - b; }); // Ascending&#10;console.log(numArr); // Outputs: [1, 5, 25, 40, 100]</code>
+
+      <h3>9. push() & pop()</h3>
+      <p><code>push()</code> adds one or more elements to the <strong>end</strong> and returns the new length. <code>pop()</code> removes the <strong>last</strong> element and returns it.</p>
+      <code>let stack = [10, 20];&#10;let newLength = stack.push(30, 40); // Adds to end&#10;console.log(newLength); // Outputs: 4&#10;let lastItem = stack.pop(); // Removes from end&#10;console.log(lastItem); // Outputs: 40&#10;console.log(stack); // Outputs: [10, 20, 30]</code>
+
+      <h3>10. shift() & unshift()</h3>
+      <p><code>shift()</code> removes the <strong>first</strong> element and returns it. <code>unshift()</code> adds elements to the <strong>beginning</strong> and returns the new length.</p>
+      <code>let queue = ["B", "C", "D"];&#10;queue.unshift("A"); // Adds "A" to start -> ["A", "B", "C", "D"]&#10;let first = queue.shift(); // Removes "A" from start&#10;console.log(first); // Outputs: "A"&#10;console.log(queue); // Outputs: ["B", "C", "D"]</code>
+
+      <h3>11. map()</h3>
+      <p>Creates a <strong>new array</strong> by applying a function to <strong>every element</strong> of the original array. Does NOT modify the original. Commonly used for transforming data.</p>
+      <code>let prices = [100, 200, 300];&#10;let discounted = prices.map(function(price) {&#10;  return price - 20; // Apply 20 rupees discount&#10;});&#10;console.log(discounted); // Outputs: [80, 180, 280]&#10;console.log(prices); // Outputs: [100, 200, 300] (unchanged)</code>
+
+      <h3>12. filter()</h3>
+      <p>Creates a <strong>new array</strong> containing only those elements that <strong>pass a test</strong> (condition returns true). Does NOT modify the original.</p>
+      <code>let ages = [12, 18, 25, 8, 30, 16];&#10;let adults = ages.filter(function(age) {&#10;  return age >= 18; // Keep only 18 or above&#10;});&#10;console.log(adults); // Outputs: [18, 25, 30]&#10;console.log(ages); // Outputs: [12, 18, 25, 8, 30, 16] (unchanged)</code>
+
+      <h3>13. reduce()</h3>
+      <p>Reduces the entire array to a <strong>single value</strong> (like a sum, product, or merged string). It takes a callback with an <strong>accumulator</strong> and a <strong>current value</strong>.</p>
+      <code>let numbers = [1, 2, 3, 4, 5];&#10;let total = numbers.reduce(function(accumulator, currentValue) {&#10;  return accumulator + currentValue;&#10;}, 0); // 0 is the initial value of accumulator&#10;console.log(total); // Outputs: 15 (1+2+3+4+5)</code>
+
+      <h3>14. find()</h3>
+      <p>Returns the <strong>first element</strong> that satisfies the provided condition. Returns <code>undefined</code> if no element matches.</p>
+      <code>let users = [&#10;  { id: 1, name: "Noor" },&#10;  { id: 2, name: "Rahul" },&#10;  { id: 3, name: "Priya" }&#10;];&#10;let found = users.find(function(user) {&#10;  return user.id === 2;&#10;});&#10;console.log(found); // Outputs: { id: 2, name: "Rahul" }</code>
+
+      <h3>15. findIndex()</h3>
+      <p>Returns the <strong>index</strong> of the first element that satisfies the condition. Returns <code>-1</code> if not found.</p>
+      <code>let scores = [45, 80, 55, 90, 60];&#10;let index = scores.findIndex(function(score) {&#10;  return score > 85;&#10;});&#10;console.log(index); // Outputs: 3 (because 90 is at index 3)</code>
+
+      <h3>16. forEach()</h3>
+      <p>Executes a provided function <strong>once for each</strong> array element. It does NOT return a new array (returns <code>undefined</code>). Used mainly for performing side effects like logging.</p>
+      <code>let cities = ["Delhi", "Mumbai", "Chennai"];&#10;cities.forEach(function(city, index) {&#10;  console.log(index + ": " + city);&#10;});&#10;// Outputs:&#10;// 0: Delhi&#10;// 1: Mumbai&#10;// 2: Chennai</code>
+
+      <h3>17. every()</h3>
+      <p>Returns <code>true</code> if <strong>ALL elements</strong> pass the test condition. Returns <code>false</code> if even one element fails.</p>
+      <code>let marks = [80, 85, 90, 78, 88];&#10;let allPassed = marks.every(function(mark) {&#10;  return mark >= 75; // Check if everyone scored 75+&#10;});&#10;console.log(allPassed); // Outputs: true</code>
+
+      <h3>18. some()</h3>
+      <p>Returns <code>true</code> if <strong>AT LEAST ONE</strong> element passes the test condition. Opposite of <code>every()</code>.</p>
+      <code>let ages = [12, 15, 22, 10];&#10;let hasAdult = ages.some(function(age) {&#10;  return age >= 18;&#10;});&#10;console.log(hasAdult); // Outputs: true (because 22 is present)</code>
+
+      <h3>19. flat()</h3>
+      <p>Flattens a nested array (array inside array) into a single flat array. Takes an optional <code>depth</code> argument (default is 1).</p>
+      <code>let nested = [1, [2, 3], [4, [5, 6]]];&#10;console.log(nested.flat()); // Outputs: [1, 2, 3, 4, [5, 6]] (depth 1)&#10;console.log(nested.flat(Infinity)); // Outputs: [1, 2, 3, 4, 5, 6] (fully flat)</code>
+
+      <h3>20. Array.isArray()</h3>
+      <p>A static method used to check if a given value is an array. Returns <code>true</code> or <code>false</code>.</p>
+      <code>let arr = [1, 2, 3];&#10;let obj = { name: "Noor" };&#10;console.log(Array.isArray(arr)); // Outputs: true&#10;console.log(Array.isArray(obj)); // Outputs: false</code>
+
+      <!-- SECTION 11: OBJECT METHODS -->
+      <h2>11. Object Methods</h2>
+      <p>
+        Object methods are built-in functions that help you work with objects — like getting keys, values, converting objects to arrays, and merging objects.
+      </p>
+
+      <h3>1. Object.keys()</h3>
+      <p>Returns an <strong>array of all keys</strong> (property names) of the object.</p>
+      <code>let student = { name: "Noor", age: 22, city: "Delhi" };&#10;let keys = Object.keys(student);&#10;console.log(keys); // Outputs: ["name", "age", "city"]</code>
+
+      <h3>2. Object.values()</h3>
+      <p>Returns an <strong>array of all values</strong> of the object's properties.</p>
+      <code>let car = { brand: "Tata", model: "Nexon", year: 2024 };&#10;let vals = Object.values(car);&#10;console.log(vals); // Outputs: ["Tata", "Nexon", 2024]</code>
+
+      <h3>3. Object.entries()</h3>
+      <p>Returns an <strong>array of arrays</strong>, where each inner array is a <code>[key, value]</code> pair. Useful when you want to loop through both keys and values together.</p>
+      <code>let product = { name: "Laptop", price: 50000, inStock: true };&#10;let entries = Object.entries(product);&#10;console.log(entries);&#10;// Outputs: [ ["name", "Laptop"], ["price", 50000], ["inStock", true] ]</code>
+
+      <h3>4. Object.hasOwnProperty()</h3>
+      <p>Checks if the object has a <strong>specific property</strong> as its own (not inherited). Returns <code>true</code> or <code>false</code>.</p>
+      <code>let user = { name: "Amit", email: "amit@mail.com" };&#10;console.log(user.hasOwnProperty("name")); // Outputs: true&#10;console.log(user.hasOwnProperty("phone")); // Outputs: false</code>
+
+      <h3>5. Object.assign()</h3>
+      <p>Copies properties from one or more <strong>source objects</strong> into a <strong>target object</strong>. Modifies the target object and also returns it.</p>
+      <code>let target = { a: 1, b: 2 };&#10;let source = { b: 3, c: 4 }; // 'b' will overwrite target's 'b'&#10;let result = Object.assign(target, source);&#10;console.log(result); // Outputs: { a: 1, b: 3, c: 4 }&#10;console.log(target); // Outputs: { a: 1, b: 3, c: 4 } (target is modified)</code>
+
+      <h3>6. Object.freeze()</h3>
+      <p>Makes an object <strong>completely immutable</strong> — you cannot add, remove, or modify any properties. Returns the frozen object.</p>
+      <code>let config = { theme: "dark", fontSize: 14 };&#10;Object.freeze(config);&#10;config.theme = "light"; // Silently fails (no error in non-strict mode)&#10;config.newProp = "test"; // Silently fails&#10;console.log(config); // Outputs: { theme: "dark", fontSize: 14 } (unchanged)</code>
+
+      <h3>7. Object.seal()</h3>
+      <p>Prevents adding new properties or removing existing ones, but <strong>allows modifying</strong> existing property values.</p>
+      <code>let data = { name: "Rahul", score: 85 };&#10;Object.seal(data);&#10;data.score = 90; // Allowed: modifying existing property&#10;data.city = "Mumbai"; // Silently fails: cannot add new property&#10;delete data.name; // Silently fails: cannot delete&#10;console.log(data); // Outputs: { name: "Rahul", score: 90 }</code>
+
+      <h3>8. Object.keys().length</h3>
+      <p>Objects don't have a <code>.length</code> property directly. To find how many properties an object has, use <code>Object.keys(obj).length</code>.</p>
+      <code>let employee = { id: 1, name: "Priya", dept: "HR", salary: 40000 };&#10;let propCount = Object.keys(employee).length;&#10;console.log(propCount); // Outputs: 4</code>
+
+
+
+
+            <!-- SECTION: STRING METHODS -->
+      <h2>10. String Methods</h2>
+      <p>
+        String methods are built-in functions that help you manipulate, search, extract, and transform text. <span class="highlight">Important:</span> Strings are <strong>immutable</strong> in JavaScript — no method changes the original string; they always return a <strong>new string</strong>.
+      </p>
+
+      <h3>1. length (Property)</h3>
+      <p>Not a method, but a property. Returns the total number of characters in the string (spaces are also counted).</p>
+      <code>let str = "Hello World";&#10;console.log(str.length); // Outputs: 11</code>
+
+      <h3>2. toUpperCase()</h3>
+      <p>Converts the entire string to <strong>uppercase</strong> letters.</p>
+      <code>let name = "noor";&#10;console.log(name.toUpperCase()); // Outputs: "NOOR"</code>
+
+      <h3>3. toLowerCase()</h3>
+      <p>Converts the entire string to <strong>lowercase</strong> letters.</p>
+      <code>let city = "DELHI";&#10;console.log(city.toLowerCase()); // Outputs: "delhi"</code>
+
+      <h3>4. trim()</h3>
+      <p>Removes <strong>whitespace</strong> (spaces, tabs, newlines) from <strong>both ends</strong> of the string. Does NOT remove spaces from the middle.</p>
+      <code>let messy = "   Hello   World   ";&#10;console.log(messy.trim()); // Outputs: "Hello   World"</code>
+
+      <h3>5. trimStart()</h3>
+      <p>Removes whitespace only from the <strong>beginning</strong> (left side) of the string.</p>
+      <code>let text = "   Hello World";&#10;console.log(text.trimStart()); // Outputs: "Hello World"</code>
+
+      <h3>6. trimEnd()</h3>
+      <p>Removes whitespace only from the <strong>end</strong> (right side) of the string.</p>
+      <code>let text = "Hello World   ";&#10;console.log(text.trimEnd()); // Outputs: "Hello World"</code>
+
+      <h3>7. includes()</h3>
+      <p>Checks if a substring exists inside the string. Returns <code>true</code> or <code>false</code>. It is <strong>case-sensitive</strong>.</p>
+      <code>let sentence = "I love JavaScript";&#10;console.log(sentence.includes("love")); // Outputs: true&#10;console.log(sentence.includes("Love")); // Outputs: false (case-sensitive)</code>
+
+      <h3>8. indexOf()</h3>
+      <p>Returns the <strong>first index</strong> (position) where the specified substring is found. Returns <code>-1</code> if not found.</p>
+      <code>let msg = "Hello World Hello";&#10;console.log(msg.indexOf("Hello")); // Outputs: 0 (first occurrence)&#10;console.log(msg.indexOf("World")); // Outputs: 6&#10;console.log(msg.indexOf("Bye")); // Outputs: -1 (not found)</code>
+
+      <h3>9. lastIndexOf()</h3>
+      <p>Same as <code>indexOf()</code>, but searches from the <strong>end</strong> and returns the <strong>last occurrence's</strong> index.</p>
+      <code>let msg = "Hello World Hello";&#10;console.log(msg.lastIndexOf("Hello")); // Outputs: 12 (second "Hello")</code>
+
+      <h3>10. startsWith()</h3>
+      <p>Checks if the string <strong>starts with</strong> the specified substring. Returns <code>true</code> or <code>false</code>.</p>
+      <code>let url = "https://google.com";&#10;console.log(url.startsWith("https")); // Outputs: true&#10;console.log(url.startsWith("http")); // Outputs: false</code>
+
+      <h3>11. endsWith()</h3>
+      <p>Checks if the string <strong>ends with</strong> the specified substring. Returns <code>true</code> or <code>false</code>.</p>
+      <code>let filename = "photo.jpg";&#10;console.log(filename.endsWith(".jpg")); // Outputs: true&#10;console.log(filename.endsWith(".png")); // Outputs: false</code>
+
+      <h3>12. charAt()</h3>
+      <p>Returns the character at a <strong>specific index</strong>. If the index is out of range, it returns an empty string.</p>
+      <code>let word = "JavaScript";&#10;console.log(word.charAt(0)); // Outputs: "J"&#10;console.log(word.charAt(4)); // Outputs: "S"</code>
+
+      <h3>13. charCodeAt()</h3>
+      <p>Returns the <strong>Unicode (ASCII) number</strong> of the character at a given index.</p>
+      <code>let letter = "A";&#10;console.log(letter.charCodeAt(0)); // Outputs: 65&#10;console.log("a".charCodeAt(0)); // Outputs: 97</code>
+
+      <h3>14. slice(start, end)</h3>
+      <p>Extracts a portion of the string and returns it as a <strong>new string</strong>. The <code>end</code> index is <strong>excluded</strong>. Negative values count from the end.</p>
+      <code>let str = "Hello World";&#10;console.log(str.slice(0, 5)); // Outputs: "Hello" (index 0 to 4)&#10;console.log(str.slice(6)); // Outputs: "World" (from index 6 to end)&#10;console.log(str.slice(-5)); // Outputs: "World" (last 5 characters)</code>
+
+      <h3>15. substring(start, end)</h3>
+      <p>Same as <code>slice()</code> but does <strong>NOT accept negative indices</strong>. If you pass a negative number, it treats it as <code>0</code>.</p>
+      <code>let str = "Hello World";&#10;console.log(str.substring(0, 5)); // Outputs: "Hello"&#10;console.log(str.substring(6, 11)); // Outputs: "World"&#10;console.log(str.substring(-3)); // Outputs: "Hello World" (negative treated as 0)</code>
+
+      <h3>16. replace()</h3>
+      <p>Replaces the <strong>first occurrence</strong> of a substring with another string. It is case-sensitive and does NOT modify the original string.</p>
+      <code>let text = "I love cats. Cats are cute.";&#10;console.log(text.replace("cats", "dogs"));&#10;// Outputs: "I love dogs. Cats are cute." (only first "cats" replaced)</code>
+
+      <h3>17. replaceAll()</h3>
+      <p>Replaces <strong>ALL occurrences</strong> of a substring. (ES2021 feature — works in modern browsers).</p>
+      <code>let text = "I love cats. Cats are cute.";&#10;console.log(text.replaceAll("cats", "dogs").replaceAll("Cats", "Dogs"));&#10;// Outputs: "I love dogs. Dogs are cute."</code>
+
+      <h3>18. split()</h3>
+      <p>Splits a string into an <strong>array of substrings</strong> based on a specified separator. Very useful for breaking strings into words or parts.</p>
+      <code>let csv = "Red,Green,Blue,Yellow";&#10;console.log(csv.split(",")); // Outputs: ["Red", "Green", "Blue", "Yellow"]&#10;&#10;let sentence = "Hello World JavaScript";&#10;console.log(sentence.split(" ")); // Outputs: ["Hello", "World", "JavaScript"]&#10;&#10;let word = "JavaScript";&#10;console.log(word.split("")); // Outputs: ["J","a","v","a","S","c","r","i","p","t"]</code>
+
+      <h3>19. repeat()</h3>
+      <p>Returns a new string with the original string repeated a <strong>specified number of times</strong>.</p>
+      <code>let dash = "-";&#10;console.log(dash.repeat(10)); // Outputs: "----------"&#10;let ha = "Ha";&#10;console.log(ha.repeat(3)); // Outputs: "HaHaHa"</code>
+
+      <h3>20. concat()</h3>
+      <p>Joins two or more strings together and returns a <strong>new string</strong>. Same as using the <code>+</code> operator.</p>
+      <code>let first = "Hello";&#10;let second = "World";&#10;console.log(first.concat(" ", second)); // Outputs: "Hello World"&#10;console.log(first.concat(" ", second, "!")); // Outputs: "Hello World!"</code>
+
+      <h3>21. padStart()</h3>
+      <p>Pads the string from the <strong>start</strong> with a specified character until it reaches the target length. Useful for formatting numbers.</p>
+      <code>let num = "5";&#10;console.log(num.padStart(3, "0")); // Outputs: "005"&#10;let pin = "123";&#10;console.log(pin.padStart(6, "*")); // Outputs: "***123"</code>
+
+      <h3>22. padEnd()</h3>
+      <p>Pads the string from the <strong>end</strong> with a specified character until it reaches the target length.</p>
+      <code>let name = "Noor";&#10;console.log(name.padEnd(10, ".")); // Outputs: "Noor......"&#10;let price = "99";&#10;console.log(price.padEnd(6, " ")); // Outputs: "99    "</code>
+
+      <h3>23. match()</h3>
+      <p>Searches the string using a <strong>regular expression (RegExp)</strong> and returns an array of matches, or <code>null</code> if no match is found.</p>
+      <code>let text = "Call me at 9876543210 or 9123456789";&#10;let numbers = text.match(/\d{10}/g); // Find all 10-digit numbers&#10;console.log(numbers); // Outputs: ["9876543210", "9123456789"]</code>
+
     </div>
   </body>
 </html>
