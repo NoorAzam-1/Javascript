@@ -162,7 +162,8 @@ do {
 } while (doX < 5);
 
 // for...of Loop (values of iterable)
-let fruits = ["Apple", "Banana", "Mango"];
+// let fruits = ["Apple", "Banana", "Mango"];
+let fruits = "Apple";
 for (let fruit of fruits) {
     console.log("for-of - Fruit:", fruit);
 }
