@@ -477,11 +477,8 @@
       <p>Objects don't have a <code>.length</code> property directly. To find how many properties an object has, use <code>Object.keys(obj).length</code>.</p>
       <code>let employee = { id: 1, name: "Priya", dept: "HR", salary: 40000 };&#10;let propCount = Object.keys(employee).length;&#10;console.log(propCount); // Outputs: 4</code>
 
-
-
-
-            <!-- SECTION: STRING METHODS -->
-      <h2>10. String Methods</h2>
+      <!-- SECTION 12: STRING METHODS -->
+      <h2>12. String Methods</h2>
       <p>
         String methods are built-in functions that help you manipulate, search, extract, and transform text. <span class="highlight">Important:</span> Strings are <strong>immutable</strong> in JavaScript — no method changes the original string; they always return a <strong>new string</strong>.
       </p>
@@ -577,6 +574,48 @@
       <h3>23. match()</h3>
       <p>Searches the string using a <strong>regular expression (RegExp)</strong> and returns an array of matches, or <code>null</code> if no match is found.</p>
       <code>let text = "Call me at 9876543210 or 9123456789";&#10;let numbers = text.match(/\d{10}/g); // Find all 10-digit numbers&#10;console.log(numbers); // Outputs: ["9876543210", "9123456789"]</code>
+
+      <!-- SECTION 13: DOM MANIPULATION -->
+      <h2>13. DOM Manipulation</h2>
+      <p>
+        <strong>DOM (Document Object Model)</strong> is a tree-like structure created by the browser when an HTML page loads. JavaScript uses the DOM to <strong>select, read, modify, add, and remove</strong> HTML elements dynamically — without reloading the page. Think of the DOM as JavaScript's "remote control" for the webpage.
+      </p>
+
+      <h3>1. Selecting Elements</h3>
+      <p>The first step in DOM manipulation is finding the element you want to work with. There are 4 main methods:</p>
+      <code>// 1. getElementById — Returns a SINGLE element by its ID&#10;let heading = document.getElementById("main-title");&#10;&#10;// 2. getElementsByClassName — Returns a LIVE HTMLCollection of elements&#10;let cards = document.getElementsByClassName("card");&#10;&#10;// 3. getElementsByTagName — Returns a LIVE HTMLCollection by tag name&#10;let paragraphs = document.getElementsByTagName("p");&#10;&#10;// 4. querySelector — Returns the FIRST element matching a CSS selector (most versatile)&#10;let firstBtn = document.querySelector(".btn-primary");&#10;let navLink = document.querySelector("nav a");&#10;&#10;// 5. querySelectorAll — Returns a STATIC NodeList of ALL matching elements&#10;let allItems = document.querySelectorAll(".list-item");</code>
+
+      <h3>2. Reading & Changing Content</h3>
+      <p>Once you select an element, you can read or change its content using these properties:</p>
+      <code>let box = document.getElementById("box");&#10;&#10;// innerHTML — Gets/sets the HTML inside the element (parses HTML tags)&#10;box.innerHTML = "&lt;strong&gt;Hello&lt;/strong&gt; World"; // Renders "Hello" in bold&#10;&#10;// textContent — Gets/sets only the plain text (ignores HTML tags, safer)&#10;box.textContent = "&lt;strong&gt;Hello&lt;/strong&gt; World"; // Shows tags as plain text&#10;&#10;// innerText — Similar to textContent but respects CSS visibility (hidden text is excluded)&#10;console.log(box.innerText);</code>
+
+      <h3>3. Changing Attributes</h3>
+      <p>You can get, set, or remove HTML attributes (like src, href, class, disabled, etc.) using these methods:</p>
+      <code>let img = document.querySelector("img");&#10;let link = document.querySelector("a");&#10;&#10;// getAttribute — Read an attribute's value&#10;console.log(img.getAttribute("src")); // Outputs: "photo.jpg"&#10;&#10;// setAttribute — Set or change an attribute's value&#10;img.setAttribute("src", "new-photo.jpg");&#10;link.setAttribute("href", "https://google.com");&#10;&#10;// removeAttribute — Remove an attribute completely&#10;img.removeAttribute("alt");&#10;&#10;// Direct property access (shorter, works for standard attributes)&#10;console.log(img.src);&#10;img.src = "another-photo.jpg";&#10;link.href = "https://yahoo.com";</code>
+
+      <h3>4. Changing Styles</h3>
+      <p>Use the <code>style</code> property to change inline CSS. Property names use <strong>camelCase</strong> (not kebab-case).</p>
+      <code>let card = document.querySelector(".card");&#10;&#10;// Single style change&#10;card.style.backgroundColor = "#f7df1e";&#10;card.style.color = "#333";&#10;card.style.padding = "20px";&#10;card.style.borderRadius = "8px";&#10;card.style.display = "none"; // Hide element&#10;&#10;// CSS classes approach (recommended for multiple styles)&#10;card.classList.add("highlight");    // Add a class&#10;card.classList.remove("highlight"); // Remove a class&#10;card.classList.toggle("active");    // Add if missing, remove if present&#10;card.classList.contains("active"); // Returns true/false&#10;card.classList.replace("old", "new"); // Replace one class with another</code>
+
+      <h3>5. Creating & Adding Elements</h3>
+      <p>You can create brand new elements and insert them into the DOM:</p>
+      <code>// Step 1: Create the element&#10;let newParagraph = document.createElement("p");&#10;&#10;// Step 2: Add content and attributes&#10;newParagraph.textContent = "This is a newly created paragraph.";&#10;newParagraph.id = "new-para";&#10;newParagraph.classList.add("text-muted");&#10;&#10;// Step 3: Insert into the DOM&#10;let container = document.getElementById("container");&#10;container.appendChild(newParagraph); // Adds as the LAST child&#10;&#10;// Other insertion methods (relative positioning)&#10;let referenceNode = document.querySelector(".existing-item");&#10;container.insertBefore(newParagraph, referenceNode); // Insert BEFORE another element</code>
+
+      <h3>6. Removing Elements</h3>
+      <p>To remove an element from the DOM, you need to select it AND its parent:</p>
+      <code>// Method 1: Using removeChild (traditional)&#10;let parent = document.getElementById("list");&#10;let child = document.getElementById("item-3");&#10;parent.removeChild(child); // Removes child from parent&#10;&#10;// Method 2: Using remove() (modern, cleaner — no need for parent reference)&#10;let oldElement = document.querySelector(".outdated");&#10;oldElement.remove(); // Directly removes the element</code>
+
+      <h3>7. Traversing the DOM</h3>
+      <p>Moving between related elements (parent, children, siblings) in the DOM tree:</p>
+      <code>let item = document.querySelector(".item");&#10;&#10;// Parent&#10;let parent = item.parentElement; // or item.parentNode&#10;&#10;// Children&#10;let children = item.children; // HTMLCollection (only element nodes)&#10;let firstChild = item.firstElementChild; // First child element&#10;let lastChild = item.lastElementChild;  // Last child element&#10;&#10;// Siblings&#10;let nextSibling = item.nextElementSibling;     // Next element sibling&#10;let prevSibling = item.previousElementSibling; // Previous element sibling&#10;&#10;<span class="highlight">Note:</span> Use elementChildren/ElementSibling versions to skip text nodes (whitespace).</code>
+
+      <h3>8. Working with Classes (classList)</h3>
+      <p><code>classList</code> is the recommended way to manipulate CSS classes. It is more efficient than changing styles one by one.</p>
+      <code>let btn = document.querySelector("button");&#10;&#10;// Add one or more classes&#10;btn.classList.add("btn-primary", "rounded", "shadow");&#10;&#10;// Remove specific classes&#10;btn.classList.remove("rounded");&#10;&#10;// Toggle — adds if not present, removes if present (very useful for dark mode, menus, etc.)&#10;btn.classList.toggle("active");&#10;&#10;// Check if a class exists&#10;if (btn.classList.contains("btn-primary")) {&#10;  console.log("Primary button found!");&#10;}&#10;&#10;// Replace a class with another&#10;btn.classList.replace("btn-primary", "btn-danger");</code>
+
+      <h3>9. Data Attributes (dataset)</h3>
+      <p>Data attributes (<code>data-*</code>) let you store custom information in HTML elements. Access them via <code>dataset</code> in JS.</p>
+      <code>&lt;!-- HTML --&gt;&#10;&lt;div id="user" data-userid="101" data-role="admin" data-full-name="Noor Ahmed"&gt;&lt;/div&gt;&#10;&#10;// JavaScript&#10;let userDiv = document.getElementById("user");&#10;console.log(userDiv.dataset.userid);    // Outputs: "101"&#10;console.log(userDiv.dataset.role);      // Outputs: "admin"&#10;console.log(userDiv.dataset.fullName);  // Outputs: "Noor Ahmed" (kebab-case becomes camelCase)&#10;&#10;// Set new data attribute&#10;userDiv.dataset.status = "online";&#10;// HTML becomes: data-status="online"</code>
 
     </div>
   </body>
