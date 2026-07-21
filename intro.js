@@ -500,3 +500,287 @@ console.log("Object.seal:", dataSeal); // { name: "Rahul", score: 90 }
 let employeeLen = { id: 1, name: "Priya", dept: "HR", salary: 40000 };
 let propCount = Object.keys(employeeLen).length;
 console.log("Object property count:", propCount); // 4
+
+
+// ============================================================
+// TOPIC 12: STRING METHODS
+// ============================================================
+// Note: Strings are IMMUTABLE — no method changes the original string.
+// They always return a NEW string.
+
+// 1. length (Property) - Total characters including spaces
+let strLen = "Hello World";
+console.log("length:", strLen.length); // 11
+
+// 2. toUpperCase() - Converts to uppercase
+let nameUpper = "noor";
+console.log("toUpperCase:", nameUpper.toUpperCase()); // "NOOR"
+
+// 3. toLowerCase() - Converts to lowercase
+let cityLower = "DELHI";
+console.log("toLowerCase:", cityLower.toLowerCase()); // "delhi"
+
+// 4. trim() - Removes whitespace from BOTH ends
+let messyTrim = "   Hello   World   ";
+console.log("trim:", messyTrim.trim()); // "Hello   World"
+
+// 5. trimStart() - Removes whitespace from BEGINNING only
+let textTrimStart = "   Hello World";
+console.log("trimStart:", textTrimStart.trimStart()); // "Hello World"
+
+// 6. trimEnd() - Removes whitespace from END only
+let textTrimEnd = "Hello World   ";
+console.log("trimEnd:", textTrimEnd.trimEnd()); // "Hello World"
+
+// 7. includes() - Checks if substring exists (case-sensitive)
+let sentenceInc = "I love JavaScript";
+console.log("includes 'love':", sentenceInc.includes("love")); // true
+console.log("includes 'Love':", sentenceInc.includes("Love")); // false (case-sensitive)
+
+// 8. indexOf() - First index of substring, -1 if not found
+let msgIdx = "Hello World Hello";
+console.log("indexOf 'Hello':", msgIdx.indexOf("Hello")); // 0
+console.log("indexOf 'World':", msgIdx.indexOf("World")); // 6
+console.log("indexOf 'Bye':", msgIdx.indexOf("Bye")); // -1
+
+// 9. lastIndexOf() - Last occurrence index
+let msgLastIdx = "Hello World Hello";
+console.log("lastIndexOf 'Hello':", msgLastIdx.lastIndexOf("Hello")); // 12
+
+// 10. startsWith() - Checks if string starts with substring
+let urlStart = "https://google.com";
+console.log("startsWith 'https':", urlStart.startsWith("https")); // true
+console.log("startsWith 'http':", urlStart.startsWith("http")); // false
+
+// 11. endsWith() - Checks if string ends with substring
+let fileEnd = "photo.jpg";
+console.log("endsWith '.jpg':", fileEnd.endsWith(".jpg")); // true
+console.log("endsWith '.png':", fileEnd.endsWith(".png")); // false
+
+// 12. charAt() - Character at specific index
+let wordCharAt = "JavaScript";
+console.log("charAt(0):", wordCharAt.charAt(0)); // "J"
+console.log("charAt(4):", wordCharAt.charAt(4)); // "S"
+
+// 13. charCodeAt() - Unicode/ASCII number at index
+console.log("charCodeAt 'A':", "A".charCodeAt(0)); // 65
+console.log("charCodeAt 'a':", "a".charCodeAt(0)); // 97
+
+// 14. slice(start, end) - Extracts portion, end is EXCLUDED, supports negative
+let strSlice = "Hello World";
+console.log("slice(0,5):", strSlice.slice(0, 5)); // "Hello"
+console.log("slice(6):", strSlice.slice(6)); // "World"
+console.log("slice(-5):", strSlice.slice(-5)); // "World" (last 5 chars)
+
+// 15. substring(start, end) - Same as slice but NO negative indices
+let strSubstr = "Hello World";
+console.log("substring(0,5):", strSubstr.substring(0, 5)); // "Hello"
+console.log("substring(6,11):", strSubstr.substring(6, 11)); // "World"
+console.log("substring(-3):", strSubstr.substring(-3)); // "Hello World" (negative treated as 0)
+
+// 16. replace() - Replaces FIRST occurrence only (case-sensitive)
+let textReplace = "I love cats. Cats are cute.";
+console.log("replace:", textReplace.replace("cats", "dogs")); // "I love dogs. Cats are cute."
+
+// 17. replaceAll() - Replaces ALL occurrences (ES2021)
+let textReplaceAll = "I love cats. Cats are cute.";
+console.log("replaceAll:", textReplaceAll.replaceAll("cats", "dogs").replaceAll("Cats", "Dogs")); // "I love dogs. Dogs are cute."
+
+// 18. split() - Splits string into array by separator
+let csvSplit = "Red,Green,Blue,Yellow";
+console.log("split ',':", csvSplit.split(",")); // ["Red", "Green", "Blue", "Yellow"]
+
+let sentenceSplit = "Hello World JavaScript";
+console.log("split ' ':", sentenceSplit.split(" ")); // ["Hello", "World", "JavaScript"]
+
+let wordSplit = "JavaScript";
+console.log("split '':", wordSplit.split("")); // ["J","a","v","a","S","c","r","i","p","t"]
+
+// 19. repeat() - Repeats string N times
+let dashRepeat = "-";
+console.log("repeat 10:", dashRepeat.repeat(10)); // "----------"
+let haRepeat = "Ha";
+console.log("repeat 3:", haRepeat.repeat(3)); // "HaHaHa"
+
+// 20. concat() - Joins strings, same as + operator
+let firstConcat = "Hello";
+let secondConcat = "World";
+console.log("concat:", firstConcat.concat(" ", secondConcat)); // "Hello World"
+console.log("concat multi:", firstConcat.concat(" ", secondConcat, "!")); // "Hello World!"
+
+// 21. padStart() - Pads from START to target length
+let numPad = "5";
+console.log("padStart(3,'0'):", numPad.padStart(3, "0")); // "005"
+let pinPad = "123";
+console.log("padStart(6,'*'):", pinPad.padStart(6, "*")); // "***123"
+
+// 22. padEnd() - Pads from END to target length
+let namePad = "Noor";
+console.log("padEnd(10,'.'):", namePad.padEnd(10, ".")); // "Noor......"
+let pricePad = "99";
+console.log("padEnd(6,' '):", pricePad.padEnd(6, " ")); // "99    "
+
+// 23. match() - Searches using RegExp, returns array or null
+let textMatch = "Call me at 9876543210 or 9123456789";
+let numbersMatch = textMatch.match(/\d{10}/g);
+console.log("match 10-digit numbers:", numbersMatch); // ["9876543210", "9123456789"]
+
+
+// ============================================================
+// TOPIC 13: DOM MANIPULATION
+// ============================================================
+// DOM = Document Object Model — JS ka "remote control" for HTML.
+// NOTE: Ye sab HTML page ke andar hi run hote hain (browser console mein nahi).
+// Isliye inko comment mein likha hai. Uncomment karke HTML file mein use karo.
+
+// -------------------------------------------------------
+// 1. SELECTING ELEMENTS
+// -------------------------------------------------------
+// let heading = document.getElementById("main-title");
+// console.log("getElementById:", heading);
+
+// let cards = document.getElementsByClassName("card");
+// console.log("getElementsByClassName:", cards);
+
+let paragraphs = document.querySelector("p");
+console.log("getElementsByTagName:", paragraphs);
+
+// let firstBtn = document.querySelector(".btn-primary");
+// console.log("querySelector:", firstBtn);
+
+// let navLink = document.querySelector("nav a");
+// console.log("querySelector nav a:", navLink);
+
+// let allItems = document.querySelectorAll(".list-item");
+// console.log("querySelectorAll count:", allItems.length);
+
+// -------------------------------------------------------
+// 2. READING & CHANGING CONTENT
+// -------------------------------------------------------
+// let box = document.getElementById("box");
+
+// Read content
+// console.log("innerHTML read:", box.innerHTML);
+// console.log("textContent read:", box.textContent);
+// console.log("innerText read:", box.innerText);
+
+// Change content
+// box.innerHTML = "<strong>Hello</strong> World";   // Parses HTML tags
+// box.textContent = "<strong>Hello</strong> World";  // Shows tags as plain text (safer)
+
+// -------------------------------------------------------
+// 3. CHANGING ATTRIBUTES
+// -------------------------------------------------------
+// let img = document.querySelector("img");
+// let link = document.querySelector("a");
+
+// getAttribute — Read
+// console.log("getAttribute src:", img.getAttribute("src"));
+
+// setAttribute — Set/Change
+// img.setAttribute("src", "new-photo.jpg");
+// link.setAttribute("href", "https://google.com");
+
+// removeAttribute — Remove
+// img.removeAttribute("alt");
+
+// Direct property access (shorter)
+// console.log("Direct img.src:", img.src);
+// img.src = "another-photo.jpg";
+// link.href = "https://yahoo.com";
+
+// -------------------------------------------------------
+// 4. CHANGING STYLES (camelCase for CSS properties)
+// -------------------------------------------------------
+// let card = document.querySelector(".card");
+
+// card.style.backgroundColor = "#f7df1e";
+// card.style.color = "#333";
+// card.style.padding = "20px";
+// card.style.borderRadius = "8px";
+// card.style.fontSize = "18px";
+// card.style.display = "none";     // Hide element
+// card.style.display = "block";    // Show element again
+
+// -------------------------------------------------------
+// 5. WORKING WITH CLASSES (classList — recommended)
+// -------------------------------------------------------
+// let btn = document.getElementById("lll");
+// console.log("data",btn)
+
+// btn.classList.add("btn-primary", "rounded", "shadow");    // Add classes
+// btn.classList.remove("rounded");                           // Remove class
+// btn.classList.toggle("active");                            // Add if missing, remove if present
+// console.log("contains active:", btn.classList.contains("active")); // true/false check
+// btn.classList.replace("btn-primary", "btn-danger");        // Replace one class with another
+
+// -------------------------------------------------------
+// 6. CREATING & ADDING ELEMENTS
+// -------------------------------------------------------
+// Step 1: Create element
+// let newParagraph = document.createElement("p");
+
+// Step 2: Add content and attributes
+// newParagraph.textContent = "This is a newly created paragraph.";
+// newParagraph.id = "new-para";
+// newParagraph.classList.add("text-muted");
+
+// Step 3: Find parent and insert
+// let container = document.getElementById("container");
+// container.appendChild(newParagraph);    // Inserts as LAST child
+
+// Insert BEFORE another element
+// let referenceNode = document.querySelector(".existing-item");
+// container.insertBefore(newParagraph, referenceNode);
+
+// -------------------------------------------------------
+// 7. REMOVING ELEMENTS
+// -------------------------------------------------------
+// Method 1: removeChild (traditional — needs parent)
+// let parent = document.getElementById("list");
+// let child = document.getElementById("item-3");
+// parent.removeChild(child);
+
+// Method 2: remove() (modern — cleaner, no parent needed)
+// let oldElement = document.querySelector(".outdated");
+// oldElement.remove();
+
+// -------------------------------------------------------
+// 8. TRAVERSING THE DOM (parent, children, siblings)
+// -------------------------------------------------------
+// let item = document.querySelector(".item");
+
+// let parentEl = item.parentElement;             // Parent element
+// let firstChildEl = item.firstElementChild;     // First child element
+// let lastChildEl = item.lastElementChild;       // Last child element
+// let allChildren = item.children;               // HTMLCollection of child elements
+// let nextEl = item.nextElementSibling;          // Next sibling element
+// let prevEl = item.previousElementSibling;      // Previous sibling element
+
+// console.log("Parent:", parentEl);
+// console.log("First child:", firstChildEl);
+// console.log("Next sibling:", nextEl);
+
+// Note: Use Element versions (not Node versions) to skip whitespace text nodes.
+// item.firstChild      -> might return a whitespace text node (avoid)
+// item.firstElementChild -> always returns first actual element (use this)
+
+// -------------------------------------------------------
+// 9. DATA ATTRIBUTES (dataset)
+// -------------------------------------------------------
+// HTML: <div id="user" data-userid="101" data-role="admin" data-full-name="Noor Ahmed"></div>
+//
+// let userDiv = document.getElementById("user");
+//
+// // Read data attributes (kebab-case in HTML becomes camelCase in JS)
+// console.log("dataset userid:", userDiv.dataset.userid);      // "101"
+// console.log("dataset role:", userDiv.dataset.role);          // "admin"
+// console.log("dataset fullName:", userDiv.dataset.fullName);  // "Noor Ahmed"
+//
+// // Set new data attribute
+// userDiv.dataset.status = "online";
+// // HTML automatically becomes: data-status="online"
+//
+// // Update existing data attribute
+// userDiv.dataset.role = "superadmin";
+// // HTML becomes: data-role="superadmin"
