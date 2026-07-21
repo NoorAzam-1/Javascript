@@ -613,7 +613,7 @@
       <p><code>classList</code> is the recommended way to manipulate CSS classes. It is more efficient than changing styles one by one.</p>
       <code>let btn = document.querySelector("button");&#10;&#10;// Add one or more classes&#10;btn.classList.add("btn-primary", "rounded", "shadow");&#10;&#10;// Remove specific classes&#10;btn.classList.remove("rounded");&#10;&#10;// Toggle — adds if not present, removes if present (very useful for dark mode, menus, etc.)&#10;btn.classList.toggle("active");&#10;&#10;// Check if a class exists&#10;if (btn.classList.contains("btn-primary")) {&#10;  console.log("Primary button found!");&#10;}&#10;&#10;// Replace a class with another&#10;btn.classList.replace("btn-primary", "btn-danger");</code>
 
-      <h3>9. Data Attributes (dataset)</h3>
+      <h3 id="lll">9. Data Attributes (dataset)</h3>
       <p>Data attributes (<code>data-*</code>) let you store custom information in HTML elements. Access them via <code>dataset</code> in JS.</p>
       <code>&lt;!-- HTML --&gt;&#10;&lt;div id="user" data-userid="101" data-role="admin" data-full-name="Noor Ahmed"&gt;&lt;/div&gt;&#10;&#10;// JavaScript&#10;let userDiv = document.getElementById("user");&#10;console.log(userDiv.dataset.userid);    // Outputs: "101"&#10;console.log(userDiv.dataset.role);      // Outputs: "admin"&#10;console.log(userDiv.dataset.fullName);  // Outputs: "Noor Ahmed" (kebab-case becomes camelCase)&#10;&#10;// Set new data attribute&#10;userDiv.dataset.status = "online";&#10;// HTML becomes: data-status="online"</code>
 
