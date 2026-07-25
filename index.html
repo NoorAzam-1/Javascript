@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS Class Notes</title>
+    <!-- NOTE: Script ko head mein rakha hai, toh DOM wale code 
+         browser mein null dega. Hamesha script ko </body> ke upar rakho. -->
     <script src="intro.js"></script>
     <style>
       body {
@@ -582,40 +584,149 @@
       </p>
 
       <h3>1. Selecting Elements</h3>
-      <p>The first step in DOM manipulation is finding the element you want to work with. There are 4 main methods:</p>
-      <code>// 1. getElementById — Returns a SINGLE element by its ID&#10;let heading = document.getElementById("main-title");&#10;&#10;// 2. getElementsByClassName — Returns a LIVE HTMLCollection of elements&#10;let cards = document.getElementsByClassName("card");&#10;&#10;// 3. getElementsByTagName — Returns a LIVE HTMLCollection by tag name&#10;let paragraphs = document.getElementsByTagName("p");&#10;&#10;// 4. querySelector — Returns the FIRST element matching a CSS selector (most versatile)&#10;let firstBtn = document.querySelector(".btn-primary");&#10;let navLink = document.querySelector("nav a");&#10;&#10;// 5. querySelectorAll — Returns a STATIC NodeList of ALL matching elements&#10;let allItems = document.querySelectorAll(".list-item");</code>
+      <p>The first step in DOM manipulation is finding the element you want to work with. There are 5 main methods:</p>
+      <code>// 1. getElementById — Returns a SINGLE element by its ID&#10;let heading = document.getElementById("main-title");&#10;&#10;// 2. getElementsByClassName — Returns a LIVE HTMLCollection of elements&#10;let cards = document.getElementsByClassName("card");&#10;&#10;// 3. getElementsByTagName — Returns a LIVE HTMLCollection by tag name&#10;let paragraphs = document.getElementsByTagName("p");&#10;&#10;// 4. querySelector — Returns the FIRST element matching a CSS selector&#10;let firstBtn = document.querySelector(".btn-primary");&#10;&#10;// 5. querySelectorAll — Returns a STATIC NodeList of ALL matching elements&#10;let allItems = document.querySelectorAll(".list-item");</code>
 
       <h3>2. Reading & Changing Content</h3>
       <p>Once you select an element, you can read or change its content using these properties:</p>
-      <code>let box = document.getElementById("box");&#10;&#10;// innerHTML — Gets/sets the HTML inside the element (parses HTML tags)&#10;box.innerHTML = "&lt;strong&gt;Hello&lt;/strong&gt; World"; // Renders "Hello" in bold&#10;&#10;// textContent — Gets/sets only the plain text (ignores HTML tags, safer)&#10;box.textContent = "&lt;strong&gt;Hello&lt;/strong&gt; World"; // Shows tags as plain text&#10;&#10;// innerText — Similar to textContent but respects CSS visibility (hidden text is excluded)&#10;console.log(box.innerText);</code>
+      <code>let box = document.getElementById("box");&#10;&#10;// innerHTML — Gets/sets the HTML inside (parses HTML tags)&#10;box.innerHTML = "&lt;strong&gt;Hello&lt;/strong&gt; World";&#10;&#10;// textContent — Gets/sets only plain text (ignores/safe from HTML tags)&#10;box.textContent = "&lt;strong&gt;Hello&lt;/strong&gt; World";&#10;&#10;// innerText — Similar to textContent but respects CSS visibility&#10;console.log(box.innerText);</code>
 
       <h3>3. Changing Attributes</h3>
-      <p>You can get, set, or remove HTML attributes (like src, href, class, disabled, etc.) using these methods:</p>
-      <code>let img = document.querySelector("img");&#10;let link = document.querySelector("a");&#10;&#10;// getAttribute — Read an attribute's value&#10;console.log(img.getAttribute("src")); // Outputs: "photo.jpg"&#10;&#10;// setAttribute — Set or change an attribute's value&#10;img.setAttribute("src", "new-photo.jpg");&#10;link.setAttribute("href", "https://google.com");&#10;&#10;// removeAttribute — Remove an attribute completely&#10;img.removeAttribute("alt");&#10;&#10;// Direct property access (shorter, works for standard attributes)&#10;console.log(img.src);&#10;img.src = "another-photo.jpg";&#10;link.href = "https://yahoo.com";</code>
+      <p>You can get, set, or remove HTML attributes (like src, href, class) using these methods:</p>
+      <code>let img = document.querySelector("img");&#10;&#10;console.log(img.getAttribute("src"));        // Read&#10;img.setAttribute("src", "new-photo.jpg"); // Set/Change&#10;img.removeAttribute("alt");               // Remove&#10;&#10;// Direct property access (shorter, works for standard attributes)&#10;img.src = "another-photo.jpg";</code>
 
       <h3>4. Changing Styles</h3>
-      <p>Use the <code>style</code> property to change inline CSS. Property names use <strong>camelCase</strong> (not kebab-case).</p>
-      <code>let card = document.querySelector(".card");&#10;&#10;// Single style change&#10;card.style.backgroundColor = "#f7df1e";&#10;card.style.color = "#333";&#10;card.style.padding = "20px";&#10;card.style.borderRadius = "8px";&#10;card.style.display = "none"; // Hide element&#10;&#10;// CSS classes approach (recommended for multiple styles)&#10;card.classList.add("highlight");    // Add a class&#10;card.classList.remove("highlight"); // Remove a class&#10;card.classList.toggle("active");    // Add if missing, remove if present&#10;card.classList.contains("active"); // Returns true/false&#10;card.classList.replace("old", "new"); // Replace one class with another</code>
+      <p>Use the <code>style</code> property to change inline CSS. Property names use <strong>camelCase</strong>.</p>
+      <code>let card = document.querySelector(".card");&#10;card.style.backgroundColor = "#f7df1e";&#10;card.style.padding = "20px";&#10;card.style.display = "none"; // Hide element</code>
 
-      <h3>5. Creating & Adding Elements</h3>
-      <p>You can create brand new elements and insert them into the DOM:</p>
-      <code>// Step 1: Create the element&#10;let newParagraph = document.createElement("p");&#10;&#10;// Step 2: Add content and attributes&#10;newParagraph.textContent = "This is a newly created paragraph.";&#10;newParagraph.id = "new-para";&#10;newParagraph.classList.add("text-muted");&#10;&#10;// Step 3: Insert into the DOM&#10;let container = document.getElementById("container");&#10;container.appendChild(newParagraph); // Adds as the LAST child&#10;&#10;// Other insertion methods (relative positioning)&#10;let referenceNode = document.querySelector(".existing-item");&#10;container.insertBefore(newParagraph, referenceNode); // Insert BEFORE another element</code>
+      <h3>5. Working with Classes (classList)</h3>
+      <p><code>classList</code> is the recommended way to manipulate CSS classes instead of inline styles.</p>
+      <code>let btn = document.querySelector("button");&#10;btn.classList.add("btn-primary", "rounded"); // Add classes&#10;btn.classList.remove("rounded");                // Remove class&#10;btn.classList.toggle("active");                // Add if missing, remove if present&#10;btn.classList.contains("active");              // Returns true/false&#10;btn.classList.replace("old-class", "new-class"); // Replace</code>
 
-      <h3>6. Removing Elements</h3>
-      <p>To remove an element from the DOM, you need to select it AND its parent:</p>
-      <code>// Method 1: Using removeChild (traditional)&#10;let parent = document.getElementById("list");&#10;let child = document.getElementById("item-3");&#10;parent.removeChild(child); // Removes child from parent&#10;&#10;// Method 2: Using remove() (modern, cleaner — no need for parent reference)&#10;let oldElement = document.querySelector(".outdated");&#10;oldElement.remove(); // Directly removes the element</code>
+      <h3>6. Creating & Adding Elements</h3>
+      <p>You can create brand new elements and insert them into the DOM dynamically.</p>
+      <code>let newParagraph = document.createElement("p");&#10;newParagraph.textContent = "This is a newly created paragraph.";&#10;newParagraph.id = "new-para";&#10;&#10;let container = document.getElementById("container");&#10;container.appendChild(newParagraph); // Adds as the LAST child</code>
 
-      <h3>7. Traversing the DOM</h3>
-      <p>Moving between related elements (parent, children, siblings) in the DOM tree:</p>
-      <code>let item = document.querySelector(".item");&#10;&#10;// Parent&#10;let parent = item.parentElement; // or item.parentNode&#10;&#10;// Children&#10;let children = item.children; // HTMLCollection (only element nodes)&#10;let firstChild = item.firstElementChild; // First child element&#10;let lastChild = item.lastElementChild;  // Last child element&#10;&#10;// Siblings&#10;let nextSibling = item.nextElementSibling;     // Next element sibling&#10;let prevSibling = item.previousElementSibling; // Previous element sibling&#10;&#10;<span class="highlight">Note:</span> Use elementChildren/ElementSibling versions to skip text nodes (whitespace).</code>
+      <h3>7. Removing Elements</h3>
+      <p>To remove an element from the DOM completely.</p>
+      <code>// Modern way (no parent needed)&#10;let oldElement = document.querySelector(".outdated");&#10;oldElement.remove();&#10;&#10;// Traditional way (needs parent)&#10;// parent.removeChild(child);</code>
 
-      <h3>8. Working with Classes (classList)</h3>
-      <p><code>classList</code> is the recommended way to manipulate CSS classes. It is more efficient than changing styles one by one.</p>
-      <code>let btn = document.querySelector("button");&#10;&#10;// Add one or more classes&#10;btn.classList.add("btn-primary", "rounded", "shadow");&#10;&#10;// Remove specific classes&#10;btn.classList.remove("rounded");&#10;&#10;// Toggle — adds if not present, removes if present (very useful for dark mode, menus, etc.)&#10;btn.classList.toggle("active");&#10;&#10;// Check if a class exists&#10;if (btn.classList.contains("btn-primary")) {&#10;  console.log("Primary button found!");&#10;}&#10;&#10;// Replace a class with another&#10;btn.classList.replace("btn-primary", "btn-danger");</code>
+      <h3>8. Traversing the DOM</h3>
+      <p>Moving between related elements (parent, children, siblings) in the DOM tree.</p>
+      <code>let item = document.querySelector(".item");&#10;let parentEl = item.parentElement;             // Parent&#10;let firstChildEl = item.firstElementChild;     // First child&#10;let nextEl = item.nextElementSibling;          // Next sibling&#10;let prevEl = item.previousElementSibling;      // Previous sibling</code>
 
-      <h3 id="lll">9. Data Attributes (dataset)</h3>
-      <p>Data attributes (<code>data-*</code>) let you store custom information in HTML elements. Access them via <code>dataset</code> in JS.</p>
-      <code>&lt;!-- HTML --&gt;&#10;&lt;div id="user" data-userid="101" data-role="admin" data-full-name="Noor Ahmed"&gt;&lt;/div&gt;&#10;&#10;// JavaScript&#10;let userDiv = document.getElementById("user");&#10;console.log(userDiv.dataset.userid);    // Outputs: "101"&#10;console.log(userDiv.dataset.role);      // Outputs: "admin"&#10;console.log(userDiv.dataset.fullName);  // Outputs: "Noor Ahmed" (kebab-case becomes camelCase)&#10;&#10;// Set new data attribute&#10;userDiv.dataset.status = "online";&#10;// HTML becomes: data-status="online"</code>
+      <h3>9. Data Attributes (dataset)</h3>
+      <p>Data attributes (<code>data-*</code>) let you store custom info in HTML. Access them via <code>dataset</code> in JS. <span class="highlight">Note:</span> kebab-case becomes camelCase in JS.</p>
+      <code>&lt;div id="user" data-userid="101" data-role="admin"&gt;&lt;/div&gt;&#10;&#10;let userDiv = document.getElementById("user");&#10;console.log(userDiv.dataset.userid); // "101"&#10;userDiv.dataset.status = "online";  // Sets data-status="online"</code>
+
+
+      <!-- SECTION 14: EVENTS & EVENT LISTENERS -->
+      <h2>14. Events & Event Listeners</h2>
+      <p>
+        Events are actions that happen in the browser (like a user clicking a button, typing in an input, or the page finishing loading). <code>addEventListener</code> is the modern way to "listen" for these actions and run JavaScript code when they occur.
+      </p>
+
+      <h3>1. addEventListener</h3>
+      <p>
+        Attaches a function (callback) to an element that triggers whenever a specific event happens. <span class="highlight">Syntax:</span> <code>element.addEventListener('event', callbackFunction)</code>.
+      </p>
+      <code>let btn = document.querySelector("#myBtn");&#10;&#10;btn.addEventListener("click", function() {&#10;  alert("Button was clicked!");&#10;});</code>
+
+      <h3>2. The 'event' Object</h3>
+      <p>
+        When an event occurs, the browser automatically passes an <code>event</code> object to your callback function. It contains useful info like exactly what was clicked (<code>event.target</code>), mouse coordinates, etc.
+      </p>
+      <code>// Useful for handling multiple buttons with a single listener&#10;let allButtons = document.querySelectorAll(".btn");&#10;&#10;allButtons.forEach(function(button) {&#10;  button.addEventListener("click", function(event) {&#10;    console.log("You clicked:", event.target.textContent);&#10;    console.log("Tag name:", event.target.tagName); // "BUTTON"&#10;  });&#10;});</code>
+
+      <h3>3. Common Events</h3>
+      <p>There are dozens of events. Here are the most frequently used ones:</p>
+      <code>// Mouse Events&#10;// "click"      — Clicked once&#10;// "dblclick"   — Double-clicked&#10;// "mouseenter" — Mouse pointer enters the element&#10;// "mouseleave" — Mouse pointer leaves the element&#10;&#10;// Keyboard Events (used on inputs or the whole document)&#10;// "keydown"    — Key is pressed down&#10;// "keyup"      — Key is released&#10;&#10;// Input/Form Events&#10;// "input"      — Fires every time the value of an input changes&#10;// "change"     — Fires when user finishes typing and clicks away&#10;// "submit"     — Fires when a form is submitted</code>
+
+      <h3>4. Getting Input Values</h3>
+      <p>
+        You can combine Events with DOM Selection to read what a user is typing in real-time.
+      </p>
+      <code>let inputField = document.querySelector("#myInput");&#10;let displayText = document.querySelector("#display");&#10;&#10;inputField.addEventListener("input", function(event) {&#10;  // event.target.value gives the current text inside the input&#10;  displayText.textContent = event.target.value;&#10;});</code>
+
+      <h3>5. Preventing Default Behavior</h3>
+      <p>
+        Some elements have built-in browser behavior. For example, clicking a <code>&lt;a&gt;</code> tag refreshes the page, or submitting a <code>&lt;form&gt;</code> reloads the page. Use <code>event.preventDefault()</code> to stop this so you can handle it with JS instead.
+      </p>
+      <code>let form = document.querySelector("#loginForm");&#10;&#10;form.addEventListener("submit", function(event) {&#10;  event.preventDefault(); // Stops page from reloading!&#10;&#10;  // Now you can grab the data manually&#10;  let email = document.querySelector("#email").value;&#10;  console.log("Form submitted with email:", email);&#10;});</code>
+
+      <h3>6. removeEventListener</h3>
+      <p>
+        Removes an event listener that was previously attached. <span class="highlight">Important:</span> You cannot remove an anonymous function. You must pass the exact same named function reference.
+      </p>
+      <code>function handleHover() {&#10;  console.log("Mouse is hovering!");&#10;}&#10;&#10;let box = document.querySelector(".box");&#10;box.addEventListener("mouseenter", handleHover);&#10;&#10;// Later, if you want to remove it:&#10;box.removeEventListener("mouseenter", handleHover);</code>
+
+
+      <!-- SECTION 15: ERROR HANDLING -->
+      <h2>15. Error Handling (try...catch...finally)</h2>
+      <p>
+        When JavaScript encounters an error (like calling a method on <code>null</code> or parsing invalid JSON), it stops executing the rest of the script and throws an error in the console. <code>try...catch</code> allows you to "catch" these errors gracefully so your entire app doesn't crash.
+      </p>
+
+      <h3>1. The try...catch Block</h3>
+      <p>
+        Put the "risky" code inside the <code>try</code> block. If an error occurs, JS immediately jumps to the <code>catch</code> block instead of crashing.
+      </p>
+      <code>try {&#10;  // Risky code here&#10;  let data = JSON.parse("This is not valid JSON"); // Will throw an error&#10;} catch (error) {&#10;  // This block runs ONLY if an error happened in try&#10;  console.log("An error occurred!");&#10;  console.log("Error Name:", error.name);     // e.g., "SyntaxError"&#10;  console.log("Error Message:", error.message); // Explains what went wrong&#10;}</code>
+
+      <h3>2. The finally Block</h3>
+      <p>
+        The <code>finally</code> block runs <strong>no matter what</strong> — whether the code in <code>try</code> succeeded or failed. It is typically used for cleanup tasks (like hiding a loading spinner).
+      </p>
+      <code>let isLoading = true;&#10;&#10;try {&#10;  let result = 10 / 2;&#10;  console.log("Result:", result);&#10;} catch (error) {&#10;  console.log("Caught an error.");&#10;} finally {&#10;  // This ALWAYS runs&#10;  isLoading = false;&#10;  console.log("Loading finished.");&#10;}</code>
+
+      <h3>3. Throwing Custom Errors</h3>
+      <p>
+        You can manually trigger an error to stop execution if your custom validation fails, using the <code>throw</code> keyword.
+      </p>
+      <code>function checkAge(age) {&#10;  if (age < 0) {&#10;    throw new Error("Age cannot be negative!"); // Custom error thrown&#10;  }&#10;  return "Valid age: " + age;&#10;}&#10;&#10;try {&#10;  console.log(checkAge(-5));&#10;} catch (error) {&#10;  console.log(error.message); // Outputs: "Age cannot be negative!"&#10;}</code>
+
+
+      <!-- SECTION 16: ES6+ MODERN FEATURES -->
+      <h2>16. ES6+ Modern Features</h2>
+      <p>
+        ES6 (ECMAScript 2015) brought massive improvements to JavaScript, making code shorter, cleaner, and easier to read. These features are standard in the modern web industry.
+      </p>
+
+      <h3>1. Template Literals (Backticks `` ` ``)</h3>
+      <p>
+        Instead of using the <code>+</code> operator to concatenate strings, use backticks. They allow you to inject variables directly using <code>${variableName}</code> (String Interpolation) and write multi-line strings without <code>\n</code>.
+      </p>
+      <code>let name = "Noor";&#10;let age = 22;&#10;&#10;// Old way (messy)&#10;console.log("Hello, " + name + ". You are " + age + " years old.");&#10;&#10;// New way (Template Literals - clean)&#10;console.log(`Hello, ${name}. You are ${age} years old.`);&#10;&#10;// Multi-line string&#10;let html = `&#10;  &lt;div class="card"&gt;&#10;    &lt;h2&gt;${name}&lt;/h2&gt;&#10;    &lt;p&gt;Age: ${age}&lt;/p&gt;&#10;  &lt;/div&gt;`;&#10;console.log(html);</code>
+
+      <h3>2. Destructuring (Arrays & Objects)</h3>
+      <p>
+        A shortcut to unpack values from arrays or properties from objects into distinct variables in a single line.
+      </p>
+      <code>// Object Destructuring&#10;const student = { name: "Rahul", grade: "A", city: "Mumbai" };&#10;const { name, grade, city } = student; // Variables must match object keys&#10;console.log(name, grade); // "Rahul" "A"&#10;&#10;// Array Destructuring (order matters, not name)&#10;const colors = ["Red", "Green", "Blue"];&#10;const [firstColor, secondColor, thirdColor] = colors;&#10;console.log(secondColor); // "Green"&#10;&#10;// Renaming while destructuring objects&#10;const { name: studentName, grade: studentGrade } = student;&#10;console.log(studentName); // "Rahul"</code>
+
+      <h3>3. Spread Operator (...)</h3>
+      <p>
+        The spread operator <code>...</code> expands an iterable (like an array or object) into individual elements. It is incredibly useful for cloning and merging.
+      </p>
+      <code>// Cloning an Array (creates a NEW array, not a reference)&#10;const originalArr = [1, 2, 3];&#10;const clonedArr = [...originalArr];&#10;clonedArr.push(4);&#10;console.log(originalArr); // [1, 2, 3] (unchanged)&#10;&#10;// Merging two Arrays&#10;const arrA = [1, 2];&#10;const arrB = [3, 4];&#10;const mergedArr = [...arrA, ...arrB]; // [1, 2, 3, 4]&#10;&#10;// Cloning & Merging Objects&#10;const user = { name: "Noor", age: 22 };&#10;const details = { city: "Delhi", country: "India" };&#10;const fullUser = { ...user, ...details }; &#10;console.log(fullUser); // { name: "Noor", age: 22, city: "Delhi", country: "India" }</code>
+
+      <h3>4. Rest Operator (...)</h3>
+      <p>
+        Looks exactly like the spread operator <code>...</code>, but does the <strong>opposite</strong>. It packs remaining elements into a single array. It is mostly used in function parameters to accept any number of arguments.
+      </p>
+      <code>// Function that accepts unlimited numbers&#10;function calculateSum(...numbers) { // 'numbers' becomes an array [10, 20, 30]&#10;  return numbers.reduce((total, num) => total + num, 0);&#10;}&#10;console.log(calculateSum(10, 20, 30)); // 60&#10;console.log(calculateSum(5, 5)); // 10&#10;&#10;// Rest in Array Destructuring&#10;const scores = [95, 80, 75, 60, 55];&#10;const [first, second, ...restOfScores] = scores;&#10;console.log(first);          // 95&#10;console.log(restOfScores);  // [75, 60, 55]</code>
+
+      <h3>5. Default Parameters</h3>
+      <p>
+        Allows you to set default values for function parameters in case the user forgets to pass an argument.
+      </p>
+      <code>// If 'role' is not passed, it defaults to "Guest"&#10;function greetUser(name, role = "Guest") {&#10;  console.log(`Hello ${name}, your role is ${role}`);&#10;}&#10;&#10;greetUser("Amit", "Admin"); // Outputs: Hello Amit, your role is Admin&#10;greetUser("Noor");       // Outputs: Hello Noor, your role is Guest</code>
+
+      <h3>6. Short Circuit Evaluation (&& and ||)</h3>
+      <p>
+        Beyond simple true/false logic, logical operators can be used to set default values or conditionally run code in a very short syntax.
+      </p>
+      <code>// || (OR) for setting default fallback values&#10;let userName = "" || "Anonymous"; // If left is falsy (empty string), use right&#10;console.log(userName); // "Anonymous"&#10;&#10;// && (AND) for conditional execution (runs right side ONLY if left is true)&#10;let isLoggedin = true;&#10;isLoggedin && console.log("Welcome to the dashboard!"); // Prints welcome&#10;&#10;// If isLoggedin was false, the console.log would NOT even run.</code>
 
     </div>
   </body>
