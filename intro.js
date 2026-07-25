@@ -58,7 +58,28 @@ console.log("Object student:", student);
 
 
 // ============================================================
-// TOPIC 4: OPERATORS
+// TOPIC 4: TRUTHY & FALSY VALUES
+// ============================================================
+// JS mein har value ko boolean mein convert karke dekha ja sakta hai.
+// Falsy values wo hain jo if condition mein false ki tarah behave karti hain.
+// Sirf 5 values Falsy hoti hain, baaki sab Truthy hoti hain.
+
+// The 5 Falsy Values
+console.log("Falsy 0:", Boolean(0));         // false
+console.log("Falsy '':", Boolean(""));       // false (empty string)
+console.log("Falsy null:", Boolean(null));   // false
+console.log("Falsy undefined:", Boolean(undefined)); // false
+console.log("Falsy NaN:", Boolean(NaN));     // false
+
+// Truthy Values (Common Traps)
+console.log("Truthy 1:", Boolean(1));               // true
+console.log("Truthy 'Hello':", Boolean("Hello"));   // true
+console.log("Truthy []:", Boolean([]));             // true (Empty array is TRUTHY!)
+console.log("Truthy {}:", Boolean({}));             // true (Empty object is TRUTHY!)
+
+
+// ============================================================
+// TOPIC 5: OPERATORS
 // ============================================================
 
 // Arithmetic Operators
@@ -93,7 +114,7 @@ console.log("Ternary status:", status); // Adult
 
 
 // ============================================================
-// TOPIC 5: CONDITIONAL STATEMENTS
+// TOPIC 6: CONDITIONAL STATEMENTS
 // ============================================================
 
 // if Statement
@@ -139,7 +160,7 @@ switch (day) {
 
 
 // ============================================================
-// TOPIC 6: LOOPS
+// TOPIC 7: LOOPS
 // ============================================================
 
 // for Loop
@@ -176,7 +197,7 @@ for (let key in car) {
 
 
 // ============================================================
-// TOPIC 7: FUNCTIONS
+// TOPIC 8: FUNCTIONS
 // ============================================================
 
 // 1. Function Declaration (Hoisted)
@@ -221,7 +242,7 @@ console.log("Arrow function short - Double of 7:", doubleIt(7));
 
 
 // ============================================================
-// TOPIC 8: ARRAYS
+// TOPIC 9: ARRAYS
 // ============================================================
 
 // 1. Creating an Array
@@ -260,7 +281,7 @@ console.log("Array shift:", itemsArr);
 
 
 // ============================================================
-// TOPIC 9: OBJECTS
+// TOPIC 10: OBJECTS
 // ============================================================
 
 // 1. Creating an Object (Object Literal)
@@ -310,7 +331,7 @@ personObj.introduce();
 
 
 // ============================================================
-// TOPIC 10: ARRAY METHODS
+// TOPIC 11: ARRAY METHODS
 // ============================================================
 
 // 1. indexOf()
@@ -451,7 +472,7 @@ console.log("isArray {name:'Noor'}:", Array.isArray(checkObj)); // false
 
 
 // ============================================================
-// TOPIC 11: OBJECT METHODS
+// TOPIC 12: OBJECT METHODS
 // ============================================================
 
 // 1. Object.keys() - Returns array of keys
@@ -503,7 +524,7 @@ console.log("Object property count:", propCount); // 4
 
 
 // ============================================================
-// TOPIC 12: STRING METHODS
+// TOPIC 13: STRING METHODS
 // ============================================================
 // Note: Strings are IMMUTABLE — no method changes the original string.
 // They always return a NEW string.
@@ -627,160 +648,257 @@ console.log("match 10-digit numbers:", numbersMatch); // ["9876543210", "9123456
 
 
 // ============================================================
-// TOPIC 13: DOM MANIPULATION
+// TOPIC 14: MATH METHODS
 // ============================================================
-// DOM = Document Object Model — JS ka "remote control" for HTML.
-// NOTE: Ye sab HTML page ke andar hi run hote hain (browser console mein nahi).
-// Isliye inko comment mein likha hai. Uncomment karke HTML file mein use karo.
 
-// -------------------------------------------------------
-// 1. SELECTING ELEMENTS
-// -------------------------------------------------------
-// let heading = document.getElementById("main-title");
-// console.log("getElementById:", heading);
+// 1. Rounding Methods
+console.log("Math.round(4.6):", Math.round(4.6)); // 5 (Nearest integer)
+console.log("Math.ceil(4.1):", Math.ceil(4.1));   // 5 (Rounds UP)
+console.log("Math.floor(4.9):", Math.floor(4.9)); // 4 (Rounds DOWN)
+console.log("Math.trunc(4.9):", Math.trunc(4.9)); // 4 (Removes decimal)
 
-// let cards = document.getElementsByClassName("card");
-// console.log("getElementsByClassName:", cards);
+// 2. Random Numbers
+console.log("Math.random():", Math.random()); // Random decimal 0 to 0.999...
+// Formula for random integer between min and max: Math.floor(Math.random() * (max - min + 1)) + min
+console.log("Random 1-10:", Math.floor(Math.random() * 10) + 1); 
 
-let paragraphs = document.querySelector("p");
-console.log("getElementsByTagName:", paragraphs);
+// 3. Max, Min, Pow, Sqrt
+console.log("Math.max(10,20,5):", Math.max(10, 20, 5)); // 20
+console.log("Math.min(10,20,5):", Math.min(10, 20, 5)); // 5
+console.log("Math.pow(2,3):", Math.pow(2, 3));           // 8 (2^3)
+console.log("Math.sqrt(16):", Math.sqrt(16));             // 4
+console.log("Math.abs(-5):", Math.abs(-5));               // 5 (Positive)
 
-// let firstBtn = document.querySelector(".btn-primary");
-// console.log("querySelector:", firstBtn);
 
-// let navLink = document.querySelector("nav a");
-// console.log("querySelector nav a:", navLink);
+// ============================================================
+// TOPIC 15: DOM MANIPULATION (REAL HTML DATA EXAMPLES)
+// ============================================================
+// NOTE: DOM sirf HTML file ke saath run hota hai.
+// Hum apni index.html ke REAL elements (h1, h2, h3, code, .highlight) ko target kar rahe hain.
 
-// let allItems = document.querySelectorAll(".list-item");
-// console.log("querySelectorAll count:", allItems.length);
+document.addEventListener("DOMContentLoaded", function() {
 
-// -------------------------------------------------------
-// 2. READING & CHANGING CONTENT
-// -------------------------------------------------------
-// let box = document.getElementById("box");
+    // -------------------------------------------------------
+    // 1. SELECTING REAL ELEMENTS (From your index.html)
+    // -------------------------------------------------------
+    let mainHeading = document.querySelector(".container h1"); // Selects "JavaScript Reference Guide"
+    let firstH2 = document.querySelector("h2");                // Selects "1. Introduction to JS"
+    let firstH3 = document.querySelector("h3");                // Selects "High Level"
+    let firstCodeBlock = document.querySelector("code");      // Selects very first code block
+    let highlightSpan = document.querySelector(".highlight");  // Selects first red text ("Example:")
+    
+    console.log("DOM Real H1 text:", mainHeading.innerText);
+    console.log("DOM Real H2 text:", firstH2.innerText);
+    console.log("DOM Real H3 text:", firstH3.innerText);
 
-// Read content
-// console.log("innerHTML read:", box.innerHTML);
-// console.log("textContent read:", box.textContent);
-// console.log("innerText read:", box.innerText);
+    // -------------------------------------------------------
+    // 2. READING & CHANGING REAL CONTENT
+    // -------------------------------------------------------
+    // Reading
+    console.log("DOM Real Code Block HTML:", firstCodeBlock.innerHTML);
+    
+    // Changing real element safely (Changing the first H2 text)
+    let originalH2Text = firstH2.textContent; 
+    firstH2.textContent = "1. MODIFIED BY JS!"; 
+    console.log("DOM After H2 Change:", firstH2.textContent);
+    
+    // Reverting back to original so your notes don't spoil permanently
+    firstH2.textContent = originalH2Text; 
 
-// Change content
-// box.innerHTML = "<strong>Hello</strong> World";   // Parses HTML tags
-// box.textContent = "<strong>Hello</strong> World";  // Shows tags as plain text (safer)
+    // -------------------------------------------------------
+    // 3. CHANGING REAL STYLES
+    // -------------------------------------------------------
+    // Changing the actual JS Reference Guide header to blue temporarily
+    let originalBg = mainHeading.style.backgroundColor;
+    mainHeading.style.backgroundColor = "blue";
+    console.log("DOM Style changed to blue");
+    
+    // Reverting back
+    mainHeading.style.backgroundColor = originalBg;
 
-// -------------------------------------------------------
-// 3. CHANGING ATTRIBUTES
-// -------------------------------------------------------
-// let img = document.querySelector("img");
-// let link = document.querySelector("a");
+    // -------------------------------------------------------
+    // 4. WORKING WITH REAL CLASSES
+    // -------------------------------------------------------
+    console.log("DOM Class before toggle:", highlightSpan.classList.contains("temp-highlight")); // false
+    
+    highlightSpan.classList.add("temp-highlight"); // Add fake class
+    console.log("DOM Class after add:", highlightSpan.classList.contains("temp-highlight")); // true
+    
+    highlightSpan.classList.remove("temp-highlight"); // Remove it
+    console.log("DOM Class after remove:", highlightSpan.classList.contains("temp-highlight")); // false
 
-// getAttribute — Read
-// console.log("getAttribute src:", img.getAttribute("src"));
+    // -------------------------------------------------------
+    // 5. CREATING & ADDING REAL ELEMENTS
+    // -------------------------------------------------------
+    let newElement = document.createElement("p");
+    newElement.textContent = "-> This paragraph was injected by JavaScript dynamically!";
+    newElement.style.color = "green";
+    newElement.style.fontWeight = "bold";
+    
+    // Adding it at the END of your .container div
+    let containerDiv = document.querySelector(".container");
+    containerDiv.appendChild(newElement);
+    console.log("DOM New element added at the end of container.");
+    
+    // Removing it immediately so it doesn't clutter your notes permanently
+    setTimeout(function() {
+        newElement.remove();
+        console.log("DOM Injected element removed after 3 seconds.");
+    }, 3000);
 
-// setAttribute — Set/Change
-// img.setAttribute("src", "new-photo.jpg");
-// link.setAttribute("href", "https://google.com");
+    // -------------------------------------------------------
+    // 6. FORMS (Since there is no form in HTML, we create it practically)
+    // -------------------------------------------------------
+    let tempForm = document.createElement("form");
+    let tempInput = document.createElement("input");
+    tempInput.type = "text";
+    tempInput.value = "Noor Ahmed";
+    tempForm.appendChild(tempInput);
+    document.body.appendChild(tempForm); // Add to body to test
+    
+    console.log("DOM Form Input Value:", tempInput.value); // "Noor Ahmed"
+    console.log("DOM Form Input Type:", tempInput.type);   // "text"
+    
+    tempForm.remove(); // Clean up immediately
 
-// removeAttribute — Remove
-// img.removeAttribute("alt");
+    // -------------------------------------------------------
+    // 7. EVENTS (Clicking on your REAL h1)
+    // -------------------------------------------------------
+    mainHeading.addEventListener("click", function() {
+        alert("You clicked the main 'JavaScript Reference Guide' heading!");
+    });
+    console.log("DOM Event: Click listener added to H1.");
 
-// Direct property access (shorter)
-// console.log("Direct img.src:", img.src);
-// img.src = "another-photo.jpg";
-// link.href = "https://yahoo.com";
 
-// -------------------------------------------------------
-// 4. CHANGING STYLES (camelCase for CSS properties)
-// -------------------------------------------------------
-// let card = document.querySelector(".card");
+    // -------------------------------------------------------
+    // 8. DATA ATTRIBUTES (Adding & Reading from real H3)
+    // -------------------------------------------------------
+    // Adding a data attribute dynamically to the first H3
+    firstH3.setAttribute("data-topic", "high-level-language");
+    console.log("DOM Data Attr Added:", firstH3.getAttribute("data-topic"));
+    
+    // Reading via dataset
+    console.log("DOM Dataset via JS:", firstH3.dataset.topic);
+    
+    // Clean up
+    firstH3.removeAttribute("data-topic");
 
-// card.style.backgroundColor = "#f7df1e";
-// card.style.color = "#333";
-// card.style.padding = "20px";
-// card.style.borderRadius = "8px";
-// card.style.fontSize = "18px";
-// card.style.display = "none";     // Hide element
-// card.style.display = "block";    // Show element again
+});
 
-// -------------------------------------------------------
-// 5. WORKING WITH CLASSES (classList — recommended)
-// -------------------------------------------------------
-// let btn = document.getElementById("lll");
-// console.log("data",btn)
 
-// btn.classList.add("btn-primary", "rounded", "shadow");    // Add classes
-// btn.classList.remove("rounded");                           // Remove class
-// btn.classList.toggle("active");                            // Add if missing, remove if present
-// console.log("contains active:", btn.classList.contains("active")); // true/false check
-// btn.classList.replace("btn-primary", "btn-danger");        // Replace one class with another
+// ============================================================
+// TOPIC 16: ERROR HANDLING (try...catch)
+// ============================================================
 
-// -------------------------------------------------------
-// 6. CREATING & ADDING ELEMENTS
-// -------------------------------------------------------
-// Step 1: Create element
-// let newParagraph = document.createElement("p");
+// 1. Basic try...catch
+try {
+    let badJson = "{ name: 'Noor', }"; // Invalid JSON (keys must be in double quotes)
+    JSON.parse(badJson); // This will throw an error
+} catch (error) {
+    console.log("Error Caught - Name:", error.name);     // "SyntaxError"
+    console.log("Error Caught - Message:", error.message); // Explains the issue
+}
 
-// Step 2: Add content and attributes
-// newParagraph.textContent = "This is a newly created paragraph.";
-// newParagraph.id = "new-para";
-// newParagraph.classList.add("text-muted");
+// 2. try...catch...finally
+try {
+    console.log("Trying to execute code...");
+    // let x = y + 5; // If you uncomment this, catch will run
+} catch (error) {
+    console.log("This runs ONLY if an error occurs.");
+} finally {
+    console.log("Finally block: This ALWAYS runs, error or no error.");
+}
 
-// Step 3: Find parent and insert
-// let container = document.getElementById("container");
-// container.appendChild(newParagraph);    // Inserts as LAST child
+// 3. Custom throw
+function checkAge(age) {
+    if (age < 0) {
+        throw new Error("Age cannot be negative!");
+    }
+    return "Valid Age: " + age;
+}
 
-// Insert BEFORE another element
-// let referenceNode = document.querySelector(".existing-item");
-// container.insertBefore(newParagraph, referenceNode);
+try {
+    console.log(checkAge(-5));
+} catch (e) {
+    console.log("Custom Throw Caught:", e.message); // "Age cannot be negative!"
+}
 
-// -------------------------------------------------------
-// 7. REMOVING ELEMENTS
-// -------------------------------------------------------
-// Method 1: removeChild (traditional — needs parent)
-// let parent = document.getElementById("list");
-// let child = document.getElementById("item-3");
-// parent.removeChild(child);
 
-// Method 2: remove() (modern — cleaner, no parent needed)
-// let oldElement = document.querySelector(".outdated");
-// oldElement.remove();
+// ============================================================
+// TOPIC 17: ES6+ MODERN FEATURES
+// ============================================================
 
-// -------------------------------------------------------
-// 8. TRAVERSING THE DOM (parent, children, siblings)
-// -------------------------------------------------------
-// let item = document.querySelector(".item");
+// 1. Template Literals
+let es6Name = "Noor";
+let es6Age = 22;
+console.log(`ES6 Template: Hello ${es6Name}, you are ${es6Age} years old.`);
 
-// let parentEl = item.parentElement;             // Parent element
-// let firstChildEl = item.firstElementChild;     // First child element
-// let lastChildEl = item.lastElementChild;       // Last child element
-// let allChildren = item.children;               // HTMLCollection of child elements
-// let nextEl = item.nextElementSibling;          // Next sibling element
-// let prevEl = item.previousElementSibling;      // Previous sibling element
+// 2. Destructuring Objects
+const { name: userName, age: userAgeDestructure } = { name: "Amit", age: 25, city: "Delhi" };
+console.log("ES6 Destructured Name:", userName);
 
-// console.log("Parent:", parentEl);
-// console.log("First child:", firstChildEl);
-// console.log("Next sibling:", nextEl);
+// 3. Destructuring Arrays
+const [firstColor, secondColor] = ["Red", "Green", "Blue"];
+console.log("ES6 Destructured Array:", secondColor); // "Green"
 
-// Note: Use Element versions (not Node versions) to skip whitespace text nodes.
-// item.firstChild      -> might return a whitespace text node (avoid)
-// item.firstElementChild -> always returns first actual element (use this)
+// 4. Spread Operator (Cloning/Merging)
+const originalArr = [1, 2, 3];
+const clonedArr = [...originalArr]; // True clone
+clonedArr.push(4);
+console.log("ES6 Spread Original:", originalArr); // [1, 2, 3] (unchanged)
+console.log("ES6 Spread Cloned:", clonedArr);     // [1, 2, 3, 4]
 
-// -------------------------------------------------------
-// 9. DATA ATTRIBUTES (dataset)
-// -------------------------------------------------------
-// HTML: <div id="user" data-userid="101" data-role="admin" data-full-name="Noor Ahmed"></div>
-//
-// let userDiv = document.getElementById("user");
-//
-// // Read data attributes (kebab-case in HTML becomes camelCase in JS)
-// console.log("dataset userid:", userDiv.dataset.userid);      // "101"
-// console.log("dataset role:", userDiv.dataset.role);          // "admin"
-// console.log("dataset fullName:", userDiv.dataset.fullName);  // "Noor Ahmed"
-//
-// // Set new data attribute
-// userDiv.dataset.status = "online";
-// // HTML automatically becomes: data-status="online"
-//
-// // Update existing data attribute
-// userDiv.dataset.role = "superadmin";
-// // HTML becomes: data-role="superadmin"
+// 5. Rest Operator (Packing arguments)
+function sumAll(...numbers) {
+    return numbers.reduce((acc, cur) => acc + cur, 0);
+}
+console.log("ES6 Rest Operator Sum:", sumAll(10, 20, 30, 40)); // 100
+
+// 6. Short Circuit Evaluation
+let loggedInUser = null;
+let displayName = loggedInUser || "Guest User";
+console.log("ES6 Short Circuit:", displayName); // "Guest User"
+
+
+// ============================================================
+// TOPIC 18: PROMISES & ASYNC / AWAIT
+// ============================================================
+
+// 1. Creating a Promise
+function fetchApiData() {
+    return new Promise(function(resolve, reject) {
+        let isSuccess = true; // Change to false to test reject
+        
+        setTimeout(function() {
+            if (isSuccess) {
+                resolve({ id: 101, message: "Data fetched successfully!" });
+            } else {
+                reject("Network Error: Failed to connect.");
+            }
+        }, 2000); // 2 second delay
+    });
+}
+
+// 2. Consuming with .then() / .catch()
+console.log("Promise: Starting fetch...");
+fetchApiData()
+    .then(function(data) {
+        console.log("Promise .then Success:", data.message);
+    })
+    .catch(function(error) {
+        console.log("Promise .catch Error:", error);
+    });
+
+// 3. Consuming with Async / Await (Cleaner syntax)
+async function getDataAsync() {
+    try {
+        console.log("Async/Await: Waiting for data...");
+        let response = await fetchApiData(); // Code pauses here until promise resolves
+        console.log("Async/Await Success:", response.message);
+    } catch (error) {
+        console.log("Async/Await Error:", error);
+    }
+}
+
+// Call the async function
+getDataAsync();
