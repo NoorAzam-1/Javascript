@@ -1,20 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<body>
-<h1>JavaScript HTML Events</h1>
-<h2>The onclick Attribute</h2>
+  <body>
+    <h1>JavaScript HTML Events</h1>
+    <h2>The onclick Attribute</h2>
 
-<p>Click the button to display the date.</p>
-<button onclick="displayDate()">The time is?</button>
+    <p>Click the button to display the date.</p>
+    <button onclick="displayDate()">The time is?</button>
 
-<script>
-function displayDate() {
-  document.getElementById("demo").innerHTML = Date();
-  console.log("object")
-}
-</script>
+    <script>
+      const student = { name: "Rahul", grade: "A", city: "Mumbai" };
+      const { name, grade, city } = student;
+      console.log(name, grade);
 
-<p id="demo"></p>
+      const colors = ["Red", "Green", "Blue"];
+      const [firstColor, secondColor, thirdColor] = colors;
+      console.log(secondColor,thirdColor);
 
-</body>
-</html> 
+
+      const {name: objectName, grade: objectGrade} = student;
+      const [firstColor1, secondColor2] = colors;
+      console.log(firstColor1)
+    </script>
+  </body>
+</html>
