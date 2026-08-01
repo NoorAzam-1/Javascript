@@ -1,4 +1,16 @@
-console.log("hello ");
+console.log("Welcome to JavaScript Practice!");
+
+
+// ============================================================
+// TOPIC 1: INTRODUCTION TO JS
+// ============================================================
+// JavaScript is a High-level, Dynamically-typed, and Interpreted language.
+// - High Level: Easy to read/write, memory managed automatically.
+// - Dynamically-typed: Types are figured out automatically at runtime.
+// - Interpreted: Executed line-by-line by the browser engine.
+
+console.log("Hello, World!"); // Our very first JS code
+console.log("1 + 1 =", 1 + 1); // Basic math
 
 
 // ============================================================
@@ -20,6 +32,12 @@ console.log("let score:", score); // 95
 const PI = 3.14159;
 // PI = 3; // Error: Assignment to constant variable
 console.log("const PI:", PI); // 3.14159
+
+// Practice: Variable naming rules
+let myUserName = "Noor"; // camelCase is the convention
+let $price = 99;         // $ and _ are allowed at the start
+let _private = "hidden"; // _ is allowed at the start
+console.log("Naming rules - myUserName:", myUserName, "| $price:", $price, "| _private:", _private);
 
 
 // ============================================================
@@ -58,10 +76,48 @@ console.log("Object student:", student);
 
 
 // ============================================================
-// TOPIC 4: TRUTHY & FALSY VALUES
+// TOPIC 4: TYPE CONVERSION (Coercion)
+// ============================================================
+
+// Implicit Conversion (Automatic)
+console.log("Implicit '5' + 2:", "5" + 2);     // "52" (String wins in +)
+console.log("Implicit '5' - 2:", "5" - 2);     // 3 (Minus forces Number)
+console.log("Implicit '5' * '2':", "5" * "2"); // 10 (Multiplication forces Number)
+console.log("Implicit true + 1:", true + 1);   // 2 (true becomes 1)
+
+// Explicit Conversion to String
+let num = 100;
+console.log("String(100):", String(num));     // "100"
+console.log("String(true):", String(true));   // "true"
+console.log("(250).toString():", (250).toString()); // "250"
+
+// Explicit Conversion to Number
+console.log("Number('42'):", Number("42"));     // 42
+console.log("Number('3.14'):", Number("3.14")); // 3.14
+console.log("Number('Hello'):", Number("Hello")); // NaN
+console.log("parseInt('42px'):", parseInt("42px")); // 42
+console.log("parseFloat('3.14 inches'):", parseFloat("3.14 inches")); // 3.14
+
+// Explicit Conversion to Boolean
+console.log("Boolean(0):", Boolean(0));         // false
+console.log("Boolean(1):", Boolean(1));         // true
+console.log("Boolean(''):", Boolean(""));       // false
+console.log("Boolean('Hello'):", Boolean("Hello")); // true
+console.log("Boolean(null):", Boolean(null));   // false
+
+// Type Checking (typeof)
+console.log("typeof 'Hello':", typeof "Hello");   // "string"
+console.log("typeof 42:", typeof 42);             // "number"
+console.log("typeof true:", typeof true);         // "boolean"
+console.log("typeof {name:'Noor'}:", typeof { name: "Noor" }); // "object"
+console.log("typeof [1,2,3]:", typeof [1, 2, 3]); // "object" (Arrays are objects!)
+console.log("typeof null:", typeof null);          // "object" (Historical bug)
+
+
+// ============================================================
+// TOPIC 5: TRUTHY & FALSY VALUES
 // ============================================================
 // JS mein har value ko boolean mein convert karke dekha ja sakta hai.
-// Falsy values wo hain jo if condition mein false ki tarah behave karti hain.
 // Sirf 5 values Falsy hoti hain, baaki sab Truthy hoti hain.
 
 // The 5 Falsy Values
@@ -73,13 +129,19 @@ console.log("Falsy NaN:", Boolean(NaN));     // false
 
 // Truthy Values (Common Traps)
 console.log("Truthy 1:", Boolean(1));               // true
+console.log("Truthy '0':", Boolean("0"));           // true (non-empty string)
 console.log("Truthy 'Hello':", Boolean("Hello"));   // true
 console.log("Truthy []:", Boolean([]));             // true (Empty array is TRUTHY!)
 console.log("Truthy {}:", Boolean({}));             // true (Empty object is TRUTHY!)
 
+// Practice: Using truthy/falsy for defaults
+let username = "";
+let displayName = username || "Guest";
+console.log("Default value using ||:", displayName); // "Guest"
+
 
 // ============================================================
-// TOPIC 5: OPERATORS
+// TOPIC 6: OPERATORS
 // ============================================================
 
 // Arithmetic Operators
@@ -114,7 +176,7 @@ console.log("Ternary status:", status); // Adult
 
 
 // ============================================================
-// TOPIC 6: CONDITIONAL STATEMENTS
+// TOPIC 7: CONDITIONAL STATEMENTS
 // ============================================================
 
 // if Statement
@@ -142,7 +204,7 @@ if (marks >= 90) {
 }
 
 // Switch Statement
-const day = "tuesday1";
+const day = "tuesday";
 switch (day) {
     case "monday":
         console.log("switch - monday");
@@ -160,7 +222,7 @@ switch (day) {
 
 
 // ============================================================
-// TOPIC 7: LOOPS
+// TOPIC 8: LOOPS
 // ============================================================
 
 // for Loop
@@ -183,8 +245,7 @@ do {
 } while (doX < 5);
 
 // for...of Loop (values of iterable)
-// let fruits = ["Apple", "Banana", "Mango"];
-let fruits = "Apple";
+let fruits = ["Apple", "Banana", "Mango"];
 for (let fruit of fruits) {
     console.log("for-of - Fruit:", fruit);
 }
@@ -197,7 +258,7 @@ for (let key in car) {
 
 
 // ============================================================
-// TOPIC 8: FUNCTIONS
+// TOPIC 9: FUNCTIONS
 // ============================================================
 
 // 1. Function Declaration (Hoisted)
@@ -242,7 +303,7 @@ console.log("Arrow function short - Double of 7:", doubleIt(7));
 
 
 // ============================================================
-// TOPIC 9: ARRAYS
+// TOPIC 10: ARRAYS
 // ============================================================
 
 // 1. Creating an Array
@@ -281,7 +342,7 @@ console.log("Array shift:", itemsArr);
 
 
 // ============================================================
-// TOPIC 10: OBJECTS
+// TOPIC 11: OBJECTS
 // ============================================================
 
 // 1. Creating an Object (Object Literal)
@@ -331,7 +392,7 @@ personObj.introduce();
 
 
 // ============================================================
-// TOPIC 11: ARRAY METHODS
+// TOPIC 12: ARRAY METHODS
 // ============================================================
 
 // 1. indexOf()
@@ -454,10 +515,10 @@ console.log("every allPassed:", allPassed); // true
 
 // 18. some() - True if AT LEAST ONE passes
 let agesSome = [12, 15, 22, 10];
-let hasAdult = agesSome.filter(function (age) {
+let hasAdult = agesSome.some(function (age) {
     return age >= 18;
 });
-console.log("some hasAdult (using filter for demo):", hasAdult.length > 0); // true
+console.log("some hasAdult:", hasAdult); // true (because 22 is present)
 
 // 19. flat() - Flattens nested arrays
 let nestedFlat = [1, [2, 3], [4, [5, 6]]];
@@ -472,7 +533,7 @@ console.log("isArray {name:'Noor'}:", Array.isArray(checkObj)); // false
 
 
 // ============================================================
-// TOPIC 12: OBJECT METHODS
+// TOPIC 13: OBJECT METHODS
 // ============================================================
 
 // 1. Object.keys() - Returns array of keys
@@ -524,7 +585,7 @@ console.log("Object property count:", propCount); // 4
 
 
 // ============================================================
-// TOPIC 13: STRING METHODS
+// TOPIC 14: STRING METHODS
 // ============================================================
 // Note: Strings are IMMUTABLE — no method changes the original string.
 // They always return a NEW string.
@@ -648,7 +709,50 @@ console.log("match 10-digit numbers:", numbersMatch); // ["9876543210", "9123456
 
 
 // ============================================================
-// TOPIC 14: MATH METHODS
+// TOPIC 15: NUMBER METHODS
+// ============================================================
+
+// 1. toString() - Number to string
+let numAge = 25;
+console.log("toString:", numAge.toString()); // "25"
+console.log("typeof after toString:", typeof (50).toString()); // "string"
+
+// 2. toFixed() - Fixed decimal places (returns STRING)
+let numPrice = 19.995;
+console.log("toFixed(2):", numPrice.toFixed(2)); // "20.00"
+console.log("toFixed(1):", numPrice.toFixed(1)); // "20.0"
+console.log("toFixed(0):", numPrice.toFixed(0)); // "20"
+
+// 3. toPrecision() - Total digits including decimal part
+let numPrecise = 123.456;
+console.log("toPrecision(4):", numPrecise.toPrecision(4)); // "123.5"
+console.log("toPrecision(6):", numPrecise.toPrecision(6)); // "123.456"
+
+// 4. parseInt() - String to whole number
+console.log("parseInt('42px'):", parseInt("42px")); // 42
+console.log("parseInt('10 students'):", parseInt("10 students")); // 10
+console.log("parseInt('abc'):", parseInt("abc")); // NaN
+console.log("parseInt('3.99'):", parseInt("3.99")); // 3
+
+// 5. parseFloat() - String to decimal number
+console.log("parseFloat('3.99'):", parseFloat("3.99")); // 3.99
+console.log("parseFloat('10.5 kg'):", parseFloat("10.5 kg")); // 10.5
+console.log("parseFloat('abc'):", parseFloat("abc")); // NaN
+
+// 6. Number.isInteger() - Checks if whole number
+console.log("isInteger(10):", Number.isInteger(10)); // true
+console.log("isInteger(10.5):", Number.isInteger(10.5)); // false
+console.log("isInteger('10'):", Number.isInteger("10")); // false
+
+// 7. NaN (Not a Number)
+let badResult = "hello" * 2;
+console.log("'hello' * 2 =", badResult); // NaN
+console.log("Number.isNaN(badResult):", Number.isNaN(badResult)); // true
+console.log("Number.isNaN(42):", Number.isNaN(42)); // false
+
+
+// ============================================================
+// TOPIC 16: MATH METHODS
 // ============================================================
 
 // 1. Rounding Methods
@@ -660,7 +764,7 @@ console.log("Math.trunc(4.9):", Math.trunc(4.9)); // 4 (Removes decimal)
 // 2. Random Numbers
 console.log("Math.random():", Math.random()); // Random decimal 0 to 0.999...
 // Formula for random integer between min and max: Math.floor(Math.random() * (max - min + 1)) + min
-console.log("Random 1-10:", Math.floor(Math.random() * 10) + 1); 
+console.log("Random 1-10:", Math.floor(Math.random() * 10) + 1);
 
 // 3. Max, Min, Pow, Sqrt
 console.log("Math.max(10,20,5):", Math.max(10, 20, 5)); // 20
@@ -668,126 +772,148 @@ console.log("Math.min(10,20,5):", Math.min(10, 20, 5)); // 5
 console.log("Math.pow(2,3):", Math.pow(2, 3));           // 8 (2^3)
 console.log("Math.sqrt(16):", Math.sqrt(16));             // 4
 console.log("Math.abs(-5):", Math.abs(-5));               // 5 (Positive)
+console.log("Math.PI:", Math.PI);                          // 3.141592653589793
 
 
 // ============================================================
-// TOPIC 15: DOM MANIPULATION (REAL HTML DATA EXAMPLES)
+// TOPIC 17: DATE & TIME
 // ============================================================
-// NOTE: DOM sirf HTML file ke saath run hota hai.
-// Hum apni index.html ke REAL elements (h1, h2, h3, code, .highlight) ko target kar rahe hain.
 
-document.addEventListener("DOMContentLoaded", function() {
+// 1. Creating a Date
+let nowDate = new Date();              // Current date & time
+let specificDate = new Date("2025-01-15"); // From a string
+let manualDate = new Date(2025, 0, 15);    // Year, Month (0-11!), Day
+console.log("Date now:", nowDate);
+console.log("Date specific:", specificDate);
+console.log("Date manual:", manualDate);
 
-    // -------------------------------------------------------
-    // 1. SELECTING REAL ELEMENTS (From your index.html)
-    // -------------------------------------------------------
-    let mainHeading = document.querySelector(".container h1"); // Selects "JavaScript Reference Guide"
-    let firstH2 = document.querySelector("h2");                // Selects "1. Introduction to JS"
-    let firstH3 = document.querySelector("h3");                // Selects "High Level"
-    let firstCodeBlock = document.querySelector("code");      // Selects very first code block
-    let highlightSpan = document.querySelector(".highlight");  // Selects first red text ("Example:")
-    
-    console.log("DOM Real H1 text:", mainHeading.innerText);
-    console.log("DOM Real H2 text:", firstH2.innerText);
-    console.log("DOM Real H3 text:", firstH3.innerText);
+// 2. Getting Date Parts
+let todayDate = new Date();
+console.log("getFullYear():", todayDate.getFullYear()); // e.g., 2025
+console.log("getMonth():", todayDate.getMonth());       // 0-11 (January is 0!)
+console.log("getDate():", todayDate.getDate());          // Day of month (1-31)
+console.log("getDay():", todayDate.getDay());            // Day of week (0=Sunday)
+console.log("getHours():", todayDate.getHours());        // 0-23
+console.log("getMinutes():", todayDate.getMinutes());    // 0-59
+console.log("getSeconds():", todayDate.getSeconds());    // 0-59
 
-    // -------------------------------------------------------
-    // 2. READING & CHANGING REAL CONTENT
-    // -------------------------------------------------------
-    // Reading
-    console.log("DOM Real Code Block HTML:", firstCodeBlock.innerHTML);
-    
-    // Changing real element safely (Changing the first H2 text)
-    let originalH2Text = firstH2.textContent; 
-    firstH2.textContent = "1. MODIFIED BY JS!"; 
-    console.log("DOM After H2 Change:", firstH2.textContent);
-    
-    // Reverting back to original so your notes don't spoil permanently
-    firstH2.textContent = originalH2Text; 
+// 3. Timestamps
+console.log("getTime():", nowDate.getTime());   // milliseconds since 1970
+console.log("Date.now():", Date.now());          // Same, shorter
 
-    // -------------------------------------------------------
-    // 3. CHANGING REAL STYLES
-    // -------------------------------------------------------
-    // Changing the actual JS Reference Guide header to blue temporarily
-    let originalBg = mainHeading.style.backgroundColor;
-    mainHeading.style.backgroundColor = "blue";
-    console.log("DOM Style changed to blue");
-    
-    // Reverting back
-    mainHeading.style.backgroundColor = originalBg;
+// 4. Formatting Dates
+console.log("toDateString():", todayDate.toDateString());
+console.log("toLocaleDateString():", todayDate.toLocaleDateString());
+console.log("toLocaleTimeString():", todayDate.toLocaleTimeString());
+console.log("toLocaleString():", todayDate.toLocaleString());
 
-    // -------------------------------------------------------
-    // 4. WORKING WITH REAL CLASSES
-    // -------------------------------------------------------
-    console.log("DOM Class before toggle:", highlightSpan.classList.contains("temp-highlight")); // false
-    
-    highlightSpan.classList.add("temp-highlight"); // Add fake class
-    console.log("DOM Class after add:", highlightSpan.classList.contains("temp-highlight")); // true
-    
-    highlightSpan.classList.remove("temp-highlight"); // Remove it
-    console.log("DOM Class after remove:", highlightSpan.classList.contains("temp-highlight")); // false
 
-    // -------------------------------------------------------
-    // 5. CREATING & ADDING REAL ELEMENTS
-    // -------------------------------------------------------
-    let newElement = document.createElement("p");
-    newElement.textContent = "-> This paragraph was injected by JavaScript dynamically!";
-    newElement.style.color = "green";
-    newElement.style.fontWeight = "bold";
-    
-    // Adding it at the END of your .container div
-    let containerDiv = document.querySelector(".container");
-    containerDiv.appendChild(newElement);
-    console.log("DOM New element added at the end of container.");
-    
-    // Removing it immediately so it doesn't clutter your notes permanently
-    setTimeout(function() {
-        newElement.remove();
-        console.log("DOM Injected element removed after 3 seconds.");
-    }, 3000);
+// ============================================================
+// TOPIC 18: DOM MANIPULATION (REAL HTML DATA EXAMPLES)
+// ============================================================
+// NOTE: DOM sirf HTML file ke saath run hota hai (browser me).
+// Hum apni index.html ke REAL elements ko target kar rahe hain.
 
-    // -------------------------------------------------------
-    // 6. FORMS (Since there is no form in HTML, we create it practically)
-    // -------------------------------------------------------
-    let tempForm = document.createElement("form");
-    let tempInput = document.createElement("input");
-    tempInput.type = "text";
-    tempInput.value = "Noor Ahmed";
-    tempForm.appendChild(tempInput);
-    document.body.appendChild(tempForm); // Add to body to test
-    
-    console.log("DOM Form Input Value:", tempInput.value); // "Noor Ahmed"
-    console.log("DOM Form Input Type:", tempInput.type);   // "text"
-    
-    tempForm.remove(); // Clean up immediately
+if (typeof document !== "undefined") {
+    document.addEventListener("DOMContentLoaded", function () {
 
-    // -------------------------------------------------------
-    // 7. EVENTS (Clicking on your REAL h1)
-    // -------------------------------------------------------
-    mainHeading.addEventListener("click", function() {
-        alert("You clicked the main 'JavaScript Reference Guide' heading!");
+        // -------------------------------------------------------
+        // 1. SELECTING REAL ELEMENTS (From your index.html)
+        // -------------------------------------------------------
+        let mainHeading = document.querySelector(".container h1"); // Selects "JavaScript Reference Guide"
+        let firstH2 = document.querySelector("h2");                // Selects "1. Introduction to JS"
+        let firstH3 = document.querySelector("h3");                // Selects "High Level"
+        let firstCodeBlock = document.querySelector("code");      // Selects very first code block
+        let highlightSpan = document.querySelector(".highlight");  // Selects first red text ("Example:")
+
+        console.log("DOM Real H1 text:", mainHeading.innerText);
+        console.log("DOM Real H2 text:", firstH2.innerText);
+        console.log("DOM Real H3 text:", firstH3.innerText);
+
+        // -------------------------------------------------------
+        // 2. READING & CHANGING REAL CONTENT
+        // -------------------------------------------------------
+        console.log("DOM Real Code Block HTML:", firstCodeBlock.innerHTML);
+
+        // Changing real element safely (then reverting so notes aren't spoiled)
+        let originalH2Text = firstH2.textContent;
+        firstH2.textContent = "1. MODIFIED BY JS!";
+        console.log("DOM After H2 Change:", firstH2.textContent);
+        firstH2.textContent = originalH2Text;
+
+        // -------------------------------------------------------
+        // 3. CHANGING REAL STYLES
+        // -------------------------------------------------------
+        let originalBg = mainHeading.style.backgroundColor;
+        mainHeading.style.backgroundColor = "blue";
+        console.log("DOM Style changed to blue");
+        mainHeading.style.backgroundColor = originalBg;
+
+        // -------------------------------------------------------
+        // 4. WORKING WITH REAL CLASSES
+        // -------------------------------------------------------
+        console.log("DOM Class before toggle:", highlightSpan.classList.contains("temp-highlight")); // false
+        highlightSpan.classList.add("temp-highlight");
+        console.log("DOM Class after add:", highlightSpan.classList.contains("temp-highlight")); // true
+        highlightSpan.classList.remove("temp-highlight");
+        console.log("DOM Class after remove:", highlightSpan.classList.contains("temp-highlight")); // false
+
+        // -------------------------------------------------------
+        // 5. CREATING & ADDING REAL ELEMENTS
+        // -------------------------------------------------------
+        let newElement = document.createElement("p");
+        newElement.textContent = "-> This paragraph was injected by JavaScript dynamically!";
+        newElement.style.color = "green";
+        newElement.style.fontWeight = "bold";
+
+        let containerDiv = document.querySelector(".container");
+        containerDiv.appendChild(newElement);
+        console.log("DOM New element added at the end of container.");
+
+        setTimeout(function () {
+            newElement.remove();
+            console.log("DOM Injected element removed after 3 seconds.");
+        }, 3000);
+
+        // -------------------------------------------------------
+        // 6. DATA ATTRIBUTES (Adding & Reading from real H3)
+        // -------------------------------------------------------
+        firstH3.setAttribute("data-topic", "high-level-language");
+        console.log("DOM Data Attr Added:", firstH3.getAttribute("data-topic"));
+        console.log("DOM Dataset via JS:", firstH3.dataset.topic);
+        firstH3.removeAttribute("data-topic");
+
     });
-    console.log("DOM Event: Click listener added to H1.");
-
-
-    // -------------------------------------------------------
-    // 8. DATA ATTRIBUTES (Adding & Reading from real H3)
-    // -------------------------------------------------------
-    // Adding a data attribute dynamically to the first H3
-    firstH3.setAttribute("data-topic", "high-level-language");
-    console.log("DOM Data Attr Added:", firstH3.getAttribute("data-topic"));
-    
-    // Reading via dataset
-    console.log("DOM Dataset via JS:", firstH3.dataset.topic);
-    
-    // Clean up
-    firstH3.removeAttribute("data-topic");
-
-});
+}
 
 
 // ============================================================
-// TOPIC 16: ERROR HANDLING (try...catch)
+// TOPIC 19: EVENTS & EVENT LISTENERS
+// ============================================================
+
+if (typeof document !== "undefined") {
+    document.addEventListener("DOMContentLoaded", function () {
+
+        // 1. addEventListener - Attach a click handler to real h1
+        let mainHeading = document.querySelector(".container h1");
+        mainHeading.addEventListener("click", function () {
+            alert("You clicked the main 'JavaScript Reference Guide' heading!");
+        });
+        console.log("Event: Click listener added to H1.");
+
+        // 2. The 'event' object - target tells what was clicked
+        document.querySelectorAll("h2").forEach(function (heading) {
+            heading.addEventListener("mouseenter", function (event) {
+                console.log("Event mouseenter on:", event.target.tagName, "-", event.target.textContent);
+            });
+        });
+
+    });
+}
+
+
+// ============================================================
+// TOPIC 20: ERROR HANDLING (try...catch...finally)
 // ============================================================
 
 // 1. Basic try...catch
@@ -825,7 +951,7 @@ try {
 
 
 // ============================================================
-// TOPIC 17: ES6+ MODERN FEATURES
+// TOPIC 21: ES6+ MODERN FEATURES
 // ============================================================
 
 // 1. Template Literals
@@ -856,20 +982,188 @@ console.log("ES6 Rest Operator Sum:", sumAll(10, 20, 30, 40)); // 100
 
 // 6. Short Circuit Evaluation
 let loggedInUser = null;
-let displayName = loggedInUser || "Guest User";
-console.log("ES6 Short Circuit:", displayName); // "Guest User"
+let displayName2 = loggedInUser || "Guest User";
+console.log("ES6 Short Circuit:", displayName2); // "Guest User"
 
 
 // ============================================================
-// TOPIC 18: PROMISES & ASYNC / AWAIT
+// TOPIC 22: CLASSES & OOP
+// ============================================================
+
+// 1. Creating a Class
+class Student {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+let s1 = new Student("Noor", 22);
+let s2 = new Student("Rahul", 25);
+console.log("Class s1.name:", s1.name); // "Noor"
+console.log("Class s2.age:", s2.age);   // 25
+
+// 2. Class Methods
+class Car {
+    constructor(brand, model) {
+        this.brand = brand;
+        this.model = model;
+    }
+    start() {
+        console.log("Class method:", this.brand + " " + this.model + " is starting!");
+    }
+}
+
+let myCar = new Car("Tata", "Nexon");
+myCar.start(); // "Tata Nexon is starting!"
+
+// 3. Inheritance (extends)
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    speak() {
+        console.log("Inheritance:", this.name + " makes a sound.");
+    }
+}
+
+class Dog extends Animal {
+    constructor(name, breed) {
+        super(name); // Calls parent constructor
+        this.breed = breed;
+    }
+    bark() {
+        console.log("Inheritance:", this.name + " barks!");
+    }
+}
+
+let dog = new Dog("Tommy", "Labrador");
+dog.speak(); // Inherited method
+dog.bark();  // Own method
+
+// 4. Getters & Setters
+class Person {
+    constructor(first, last) {
+        this.first = first;
+        this.last = last;
+    }
+    get fullName() {
+        return this.first + " " + this.last;
+    }
+    set fullName(value) {
+        [this.first, this.last] = value.split(" ");
+    }
+}
+
+let p = new Person("Amit", "Sharma");
+console.log("Getter fullName:", p.fullName); // "Amit Sharma"
+p.fullName = "Rahul Verma";
+console.log("Setter first:", p.first);        // "Rahul"
+
+// 5. Static Methods
+class MathUtils {
+    static add(a, b) {
+        return a + b;
+    }
+}
+console.log("Static method:", MathUtils.add(5, 3)); // 8
+
+
+// ============================================================
+// TOPIC 23: JSON
+// ============================================================
+
+// 1. JSON.parse() - JSON string to JS object
+let jsonString = '{"name": "Noor", "age": 22}';
+let userFromJson = JSON.parse(jsonString);
+console.log("JSON.parse name:", userFromJson.name); // "Noor"
+console.log("JSON.parse age:", userFromJson.age);   // 22
+
+// 2. JSON.stringify() - JS object to JSON string
+let userToJson = { name: "Noor", age: 22, city: "Delhi" };
+let jsonStringified = JSON.stringify(userToJson);
+console.log("JSON.stringify:", jsonStringified); // {"name":"Noor","age":22,"city":"Delhi"}
+console.log("JSON.stringify type:", typeof jsonStringified); // "string"
+
+// 3. Working with Arrays of Objects
+let studentsJson = [
+    { name: "Noor", grade: "A" },
+    { name: "Rahul", grade: "B" }
+];
+let jsonArr = JSON.stringify(studentsJson);
+let backArr = JSON.parse(jsonArr);
+console.log("JSON array back[0].name:", backArr[0].name); // "Noor"
+
+
+// ============================================================
+// TOPIC 24: WEB STORAGE (LocalStorage & SessionStorage)
+// ============================================================
+// NOTE: Ye bhi browser me hi chalta hai. Agar Node me run karein
+// toh localStorage defined nahi hoga, isliye guard laga diya hai.
+
+if (typeof localStorage !== "undefined") {
+    // 1. Setting & Getting Data
+    localStorage.setItem("username", "Noor");
+    localStorage.setItem("theme", "dark");
+    console.log("Storage getItem username:", localStorage.getItem("username")); // "Noor"
+    console.log("Storage getItem theme:", localStorage.getItem("theme"));       // "dark"
+
+    // 2. Storing Objects (JSON)
+    let storageUser = { name: "Noor", age: 22 };
+    localStorage.setItem("user", JSON.stringify(storageUser));
+    let savedStorageUser = JSON.parse(localStorage.getItem("user"));
+    console.log("Storage saved user name:", savedStorageUser.name); // "Noor"
+
+    // 3. Removing & Clearing Data
+    localStorage.removeItem("theme");
+    console.log("Storage after removeItem theme:", localStorage.getItem("theme")); // null
+    localStorage.clear();
+    console.log("Storage length after clear:", localStorage.length); // 0
+
+    // 4. Session Storage
+    sessionStorage.setItem("sessionId", "abc123");
+    console.log("SessionStorage getItem:", sessionStorage.getItem("sessionId")); // "abc123"
+}
+
+
+// ============================================================
+// TOPIC 25: TIMERS (setTimeout & setInterval)
+// ============================================================
+
+// 1. setTimeout() - Run once after a delay (2000 ms = 2 seconds)
+setTimeout(function () {
+    console.log("Timer setTimeout: This runs after 2 seconds.");
+}, 2000);
+
+// 2. setInterval() - Run repeatedly until stopped
+let timerCounter = 0;
+let timerInterval = setInterval(function () {
+    timerCounter++;
+    console.log("Timer setInterval Tick:", timerCounter);
+    if (timerCounter === 3) {
+        clearInterval(timerInterval); // Stop after 3 ticks
+        console.log("Timer interval cleared.");
+    }
+}, 1000);
+
+// 3. clearTimeout() - Cancel a pending timeout
+let cancelMe = setTimeout(function () {
+    console.log("This will NOT run.");
+}, 5000);
+clearTimeout(cancelMe);
+console.log("Timer clearTimeout: timeout cancelled.");
+
+
+// ============================================================
+// TOPIC 26: PROMISES & ASYNC / AWAIT
 // ============================================================
 
 // 1. Creating a Promise
 function fetchApiData() {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
         let isSuccess = true; // Change to false to test reject
-        
-        setTimeout(function() {
+
+        setTimeout(function () {
             if (isSuccess) {
                 resolve({ id: 101, message: "Data fetched successfully!" });
             } else {
@@ -882,10 +1176,10 @@ function fetchApiData() {
 // 2. Consuming with .then() / .catch()
 console.log("Promise: Starting fetch...");
 fetchApiData()
-    .then(function(data) {
+    .then(function (data) {
         console.log("Promise .then Success:", data.message);
     })
-    .catch(function(error) {
+    .catch(function (error) {
         console.log("Promise .catch Error:", error);
     });
 
@@ -900,5 +1194,36 @@ async function getDataAsync() {
     }
 }
 
-// Call the async function
 getDataAsync();
+
+
+// ============================================================
+// TOPIC 27: FETCH API (Working with Servers)
+// ============================================================
+// NOTE: Ye internet require karta hai. Agar offline ho toh error catch ho jayega.
+
+if (typeof fetch !== "undefined") {
+    // 1. Basic GET Request
+    fetch("https://jsonplaceholder.typicode.com/users/1")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log("Fetch User Name:", data.name);
+        })
+        .catch(function (error) {
+            console.log("Fetch Error:", error.message);
+        });
+
+    // 2. Fetch with Async/Await
+    async function getUserFetch() {
+        try {
+            let response = await fetch("https://jsonplaceholder.typicode.com/users/1");
+            let user = await response.json();
+            console.log("Fetch Async User Email:", user.email);
+        } catch (error) {
+            console.log("Fetch Async Error:", error.message);
+        }
+    }
+    getUserFetch();
+}

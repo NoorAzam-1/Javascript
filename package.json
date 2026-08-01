@@ -1,0 +1,21 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "practice.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon practice.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoorAzam-1/Javascript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NoorAzam-1/Javascript/issues"
+  },
+  "homepage": "https://github.com/NoorAzam-1/Javascript#readme"
+}
